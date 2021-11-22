@@ -52,7 +52,7 @@ EditText TxtUser, TxtPassword;
 
     }
 
-    public void sign_in_click(View view) {
+    public void sign_up_click(View view) {
         // takes the txt from the login lins and makes them to string
         EditText email = (EditText) findViewById(R.id.TxtEmailAdd);
         String StrEmail = email.getText().toString();
@@ -73,7 +73,7 @@ EditText TxtUser, TxtPassword;
         }
 
 
-    public void sign_up_click(View view) {
+    public void sign_in_click(View view) {
         EditText email = (EditText) findViewById(R.id.TxtEmailAdd);
         String StrEmail = email.getText().toString();
         EditText Password = (EditText) findViewById(R.id.TxtPasswordAdd);
