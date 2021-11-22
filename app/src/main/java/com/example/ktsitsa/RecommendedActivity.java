@@ -27,10 +27,15 @@ public class RecommendedActivity extends AppCompatActivity {
         RecRV = findViewById(R.id.recRV);
 
         Recipes[] a = new Recipes[]{
-            new Recipes("avf","asffgnsdd\n sfsdfsdf\n sdfsdfsdf  \n sdfsdfsdf\n fasdfasdfasdfasdf\nsdfasdfsdafsadfsadf",R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm),
-            new Recipes("aerff","afsnfgndsd",R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm),
-            new Recipes("afsd","assfngfgfdd",R.drawable.dan_gold_4_jhdo54byg_unsplash),
-            new Recipes("sdff","asnfgnsdfd",R.drawable.charles_deluvio_d_vdqmtfaau_unsplash)
+            new Recipes("avf","asddsdss","asffgnsdd ","dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd\ndasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
+                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
+                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
+                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
+                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
+                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" ,R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm),
+            new Recipes("aerff","aasddss","dassd","afsnfgndsd",R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm),
+            new Recipes("afsd","asdaadss","asdasd","assfngfgfdd",R.drawable.dan_gold_4_jhdo54byg_unsplash),
+            new Recipes("sdff","asddsss","asdasd","asnfgnsdfd",R.drawable.charles_deluvio_d_vdqmtfaau_unsplash)
         };
 
 

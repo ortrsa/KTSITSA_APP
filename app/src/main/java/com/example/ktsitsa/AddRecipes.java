@@ -36,10 +36,10 @@ public class AddRecipes extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Title");
-        myRef.setValue(Title.toString());
+        myRef.setValue(Title);
 
         DatabaseReference myRefX = database.getReference("Ingredients");
-        myRef.setValue(Ingredients.toString());
+        myRef.setValue(Ingredients);
 
 
 

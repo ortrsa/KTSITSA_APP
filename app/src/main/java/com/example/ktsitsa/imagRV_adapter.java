@@ -1,6 +1,7 @@
 package com.example.ktsitsa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,20 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, r.getRecipeName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, r.getRecipeName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, RecipeDynamic.class);
+
+                intent.putExtra("recipeName",r.getRecipeName());
+                intent.putExtra("recipeIngredients",r.getRecipeIngredients());
+                intent.putExtra("method",r.getMethod());
+                intent.putExtra("recipeDescription",r.getRecipeDescription());
+                intent.putExtra("recipeImage",r.getRecipeImage());
+
+                context.startActivity(intent);
+
+
+
             }
         });
 
