@@ -3,15 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_add.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.2655130682652799" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main_user.xml" value="0.2515625" />
-        <entry key="app/src/main/res/layout/activity_recipes.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_recommended.xml" value="0.26104417670682734" />
+        <entry key="app/src/main/res/layout/activity_add.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_recipes.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_recommended.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/recommmended_list.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/templet.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/recommmended_list.xml" value="0.2965547753607023" />
+        <entry key="app/src/main/res/layout/templet.xml" value="0.22604166666666667" />
       </map>
     </option>
   </component>
