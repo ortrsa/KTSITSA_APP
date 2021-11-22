@@ -26,19 +26,16 @@ public class RecommendedActivity extends AppCompatActivity {
 
         RecRV = findViewById(R.id.recRV);
 
-        ArrayList<Integer> a = new ArrayList<>();
-        a.add(R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm);
-        a.add(R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm);
-        a.add(R.drawable.dan_gold_4_jhdo54byg_unsplash);
-        a.add(R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm);
-        a.add(R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm);
-        a.add(R.drawable.dan_gold_4_jhdo54byg_unsplash);
-        a.add(R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm);
-        a.add(R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm);
-        a.add(R.drawable.dan_gold_4_jhdo54byg_unsplash);
+        Recipes[] a = new Recipes[]{
+            new Recipes("avf","asffgnsdd\n sfsdfsdf\n sdfsdfsdf  \n sdfsdfsdf\n fasdfasdfasdfasdf\nsdfasdfsdafsadfsadf",R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm),
+            new Recipes("aerff","afsnfgndsd",R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm),
+            new Recipes("afsd","assfngfgfdd",R.drawable.dan_gold_4_jhdo54byg_unsplash),
+            new Recipes("sdff","asnfgnsdfd",R.drawable.charles_deluvio_d_vdqmtfaau_unsplash)
+        };
 
-        imagRV_adapter ada = new imagRV_adapter();
-        ada.setImg(a);
+
+
+        imagRV_adapter ada = new imagRV_adapter(a,RecommendedActivity.this);
         RecRV.setAdapter(ada);
         RecRV.setLayoutManager(new LinearLayoutManager(this));
     }

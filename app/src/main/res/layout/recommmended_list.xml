@@ -1,28 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/parent"
     android:background="#FAF6E8"
   >
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView3"
+
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        app:srcCompat="@drawable/charles_deluvio_d_vdqmtfaau_unsplash"
+        android:layout_height="match_parent"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/prime_color_background"
+        android:layout_margin="20dp"
 
-        />
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                app:srcCompat="@drawable/charles_deluvio_d_vdqmtfaau_unsplash"
+                android:layout_margin="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/respName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="שם המתכון "
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/respdisp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="תיאור המתכון "
+                    android:textAlignment="center"
+                    android:textStyle="italic" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+
+</LinearLayout>
