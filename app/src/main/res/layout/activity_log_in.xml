@@ -49,42 +49,27 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/TxtUserName"
+        android:id="@+id/Txtemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.169" />
 
     <TextView
         android:id="@+id/TxtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="392dp"
         android:text="password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TxtUserNameAdd"
-        app:layout_constraintVertical_bias="0.1" />
-
-    <EditText
-        android:id="@+id/TxtUserNameAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TxtUserName"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/TxtPasswordAdd"
@@ -97,33 +82,46 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TxtPassword"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <Button
         android:id="@+id/BtnSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="sign_in_click"
         android:text="@string/sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TxtPasswordAdd"
-        app:layout_constraintVertical_bias="0.242"
-        android:onClick="sign_in_click"/>
+        app:layout_constraintVertical_bias="0.187" />
 
     <Button
         android:id="@+id/BtnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="sign_up_click"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtnSignIn"
-        app:layout_constraintVertical_bias="0.265"
-        android:onClick="sign_up_click"/>
+        app:layout_constraintVertical_bias="0.273" />
+
+    <EditText
+        android:id="@+id/TxtEmailAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/TxtPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Txtemail"
+        app:layout_constraintVertical_bias="0.372" />
 
     // add here the code
 

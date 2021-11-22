@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -23,6 +25,12 @@ public class SettingsActivity extends AppCompatActivity {
     public void BtnLogIn(View view) {
         Intent intent = new Intent(SettingsActivity.this, LogIn.class);
         startActivity(intent);
+
+    }
+
+    public void LogOut(View view) {
+         FirebaseAuth.getInstance().signOut();
+         startActivity(new Intent(this, LogIn.class));
 
     }
 }

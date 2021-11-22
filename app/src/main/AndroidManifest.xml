@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <activity
-            android:name=".LogIn"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".templet_start"
@@ -28,7 +28,7 @@
             android:name=".RecipesActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+/////////////LogIn
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -2,4 +2,5 @@
     <string name="app_name">Ktsitsa</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">sign up</string>
+    <string name="logout">LogOut</string>
 </resources>
