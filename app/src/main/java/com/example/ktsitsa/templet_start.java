@@ -7,28 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainUser extends AppCompatActivity {
-    private Button Home;
+public class templet_start extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_user);
-      /*  ;*/
-
-
+        setContentView(R.layout.templet);
+//        lkjhkjhlkjhlkjh
     }
 
-    public void home(View view) {
-        Home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainUser.this, MainActivity.class);
-                startActivity(intent);
-            }
+    public void HomeBtnClick(View view) {
+        Intent intent = new Intent(templet_start.this, MainActivity.class);
+        startActivity(intent);
 
-
-
-
-        });
     }
 }

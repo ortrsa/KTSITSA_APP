@@ -4,13 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class RecommendedActivity extends AppCompatActivity {
 
     private RecyclerView RecRV ;
+
+    public void HomeBtnClick(View view) {
+        Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
+        startActivity(intent);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

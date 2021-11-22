@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <activity
+            android:name=".LogIn"
+            android:exported="false" />
+        <activity
+            android:name=".templet_start"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".RecommendedActivity"
             android:exported="false" />
         <activity
-            android:name=".AddActivity"
+            android:name=".AddRecipes"
             android:exported="false" />
         <activity
             android:name=".RecipesActivity"
