@@ -13,7 +13,7 @@ public class templet_start extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.templet);
-//        ofir hgfhgf
+//        ofir 456
     }
 
     public void HomeBtnClick(View view) {
