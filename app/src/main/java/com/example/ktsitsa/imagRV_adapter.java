@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHolder> {
 
-    Recipes[] respList;
+    ArrayList<Recipes> respList;
     Context context;
 
-    public imagRV_adapter(Recipes[] respList, RecommendedActivity activity){
+    public imagRV_adapter(ArrayList<Recipes> respList, RecommendedActivity activity){
         this.respList = respList;
         this.context = activity;
 
@@ -35,7 +35,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Recipes r = respList[position];
+        final Recipes r = respList.get(position);
         holder.respName.setText(r.getRecipeName());
         holder.respdisc.setText(r.getRecipeDescription());
         holder.SIV.setImageResource(r.getRecipeImage());
@@ -64,7 +64,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return respList.length;
+        return respList.size();
     }
 
 

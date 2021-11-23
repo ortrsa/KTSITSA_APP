@@ -7,7 +7,7 @@
     android:background="#FAF6E8"
     tools:context=".AddRecipes">
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/txtInstructions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Rl"
         app:layout_constraintVertical_bias="0.387" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/TxtIngredients"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:onClick="HomeBtnClick"/>
     </RelativeLayout>
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/TxtTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

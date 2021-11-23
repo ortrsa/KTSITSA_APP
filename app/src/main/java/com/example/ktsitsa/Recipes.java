@@ -7,6 +7,8 @@ public class Recipes {
     private String method;
     private int recipeImage;
 
+    public Recipes(){}
+
     public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, int recipeImage) {
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
