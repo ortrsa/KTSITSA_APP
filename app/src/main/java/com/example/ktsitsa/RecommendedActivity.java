@@ -62,21 +62,5 @@ public class RecommendedActivity extends AppCompatActivity {
         });
 
 
-//            a.add(new Recipes("avf","asddsdss","asffgnsdd ","dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd\ndasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
-//                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasddasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
-//                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
-//                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
-//                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" +
-//                    "dasd\nasd\nasdasd\nasdasd\nsadasd\nasd\nasd\nasdasdas\ndasdasd\nasdasda\nsadasdasd\nsadasdasd\ndasdasdasasddnasd\ndsaasd" ,R.drawable.whatsapp_image_2021_11_15_at_8_42_12_pm));
-//            a.add(new Recipes("aerff","aasddss","dassd","afsnfgndsd",R.drawable.whatsapp_image_2021_11_15_at_8_24_40_pm));
-//            a.add(new Recipes("afsd","asdaadss","asdasd","assfngfgfdd",R.drawable.dan_gold_4_jhdo54byg_unsplash));
-//            a.add(new Recipes("sdff","asddsss","asdasd","asnfgnsdfd",R.drawable.charles_deluvio_d_vdqmtfaau_unsplash));
-
-
-
-
-
-
-
     }
 }

@@ -5,11 +5,11 @@ public class Recipes {
     private String recipeDescription;
     private String recipeIngredients;
     private String method;
-    private int recipeImage;
+    private String recipeImage;
 
     public Recipes(){}
 
-    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, int recipeImage) {
+    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, String recipeImage) {
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
         this.recipeImage = recipeImage;
@@ -49,11 +49,11 @@ public class Recipes {
         this.recipeDescription = recipeDescription;
     }
 
-    public int getRecipeImage() {
+    public String getRecipeImage() {
         return recipeImage;
     }
 
-    public void setRecipeImage(int recipeImage) {
+    public void setRecipeImage(String recipeImage) {
         this.recipeImage = recipeImage;
     }
 }
