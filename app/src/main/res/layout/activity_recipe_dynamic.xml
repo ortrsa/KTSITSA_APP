@@ -26,7 +26,7 @@
                 android:layout_height="175dp"
                 android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/circleImageView"
-                app:srcCompat="@drawable/charles_deluvio_d_vdqmtfaau_unsplash"
+
                 />
 
             <TextView

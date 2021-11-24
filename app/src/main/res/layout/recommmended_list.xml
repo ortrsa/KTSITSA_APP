@@ -11,12 +11,14 @@
 
 
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        android:id="@+id/cardViewID"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardElevation="10dp"
         app:cardCornerRadius="20dp"
         app:cardBackgroundColor="@color/prime_color_background"
         android:layout_margin="20dp"
+        android:visibility="invisible"
 
         >
         <LinearLayout
@@ -33,7 +35,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/circleImageView"
-                app:srcCompat="@drawable/charles_deluvio_d_vdqmtfaau_unsplash"
                 android:layout_margin="10dp"
                 />
 

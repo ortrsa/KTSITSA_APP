@@ -11,7 +11,6 @@
         android:id="@+id/txtInstructions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="Instructions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +23,6 @@
         android:id="@+id/TxtIngredients"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="Ingredients"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +52,7 @@
             android:layout_marginEnd="37dp"
             android:clickable="false"
             android:fontFamily="@font/coustard_black"
+            android:onClick="HomeBtnClick"
             android:shadowColor="#000000"
             android:shadowDx="10"
             android:shadowDy="10"
@@ -69,15 +68,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023"
-            android:onClick="HomeBtnClick"/>
+            app:layout_constraintVertical_bias="0.023" />
     </RelativeLayout>
 
     <EditText
         android:id="@+id/TxtTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
         app:layout_constraintVertical_bias="0.087" />
+
 
     <Button
         android:id="@+id/BtnAdd"
@@ -94,9 +92,10 @@
         android:text="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rl" />
-
+        app:layout_constraintTop_toBottomOf="@+id/Rl"
+        app:layout_constraintVertical_bias="0.547" />
 
     <Button
         android:id="@+id/BtnAddimag"

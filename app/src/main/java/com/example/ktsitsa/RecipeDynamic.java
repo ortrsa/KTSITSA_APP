@@ -40,7 +40,7 @@ public class RecipeDynamic extends AppCompatActivity {
 
 
         progressDialog = new ProgressDialog(RecipeDynamic.this);
-        progressDialog.setTitle("Uploading File....");
+        progressDialog.setTitle("Loading...");
         progressDialog.show();
 
         mRecipeName = (TextView)findViewById(R.id.text_recipe);

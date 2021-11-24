@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.circularreveal.cardview.CircularRevealCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -59,6 +60,8 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
                 public void onSuccess(@NonNull FileDownloadTask.TaskSnapshot taskSnapshot) {
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     holder.SIV.setImageBitmap(bitmap);
+                    holder.cardview.setVisibility(View.VISIBLE);
+
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -106,6 +109,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
         private ShapeableImageView SIV;
         private TextView respName;
         private TextView respdisc;
+        private CircularRevealCardView cardview;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -114,6 +118,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
             SIV = itemView.findViewById(R.id.imageView3);
             respName = itemView.findViewById(R.id.respName);
             respdisc = itemView.findViewById(R.id.respdisp1);
+            cardview = itemView.findViewById(R.id.cardViewID);
         }
 
 
