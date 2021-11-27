@@ -6,15 +6,21 @@ public class Recipes {
     private String recipeIngredients;
     private String method;
     private String recipeImage;
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
 
     public Recipes(){}
 
-    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, String recipeImage) {
+    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, String recipeImage, String Key) {
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
         this.recipeImage = recipeImage;
         this.method = method;
         this.recipeIngredients = recipeIngredients;
+        this.key = Key;
     }
 
     public String getMethod() {

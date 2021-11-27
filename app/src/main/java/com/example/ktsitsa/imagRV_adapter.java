@@ -61,7 +61,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     holder.SIV.setImageBitmap(bitmap);
                     holder.cardview.setVisibility(View.VISIBLE);
-
+                    localFile.deleteOnExit();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {

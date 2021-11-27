@@ -72,17 +72,15 @@ public class AddRecipes extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
         Date now = new Date();
         String fileName = formatter.format(now);
-        if(!recipeName.isEmpty() && !recipeIngredients.isEmpty() && !recipeDescription.isEmpty()){
+        if(!recipeName.isEmpty() && !recipeIngredients.isEmpty() && !recipeDescription.isEmpty() && (imageUri != null)){
 
-            if(imageUri != null) {
-                upimage(fileName);
-            }
-
-            Recipes r = new Recipes(recipeName,"method",recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg");
-
+            upimage(fileName);
             db = FirebaseDatabase.getInstance();
             dbr = db.getReference("recipes");
-            dbr.child(recipeName).setValue(r).addOnCompleteListener(new OnCompleteListener<Void>() {
+            DatabaseReference pushrecipes = dbr.push();
+            Recipes r = new Recipes(recipeName,"method",recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg", pushrecipes.getKey());
+
+            pushrecipes.setValue(r).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     ((EditText)findViewById(R.id.TxtTitle)).setText("");
