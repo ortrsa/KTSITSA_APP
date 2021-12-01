@@ -31,11 +31,12 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
     ArrayList<Recipes> respList;
     Context context;
     StorageReference storageReference;
+    private Boolean IsAdmin;
 
-    public imagRV_adapter(ArrayList<Recipes> respList, RecommendedActivity activity){
+    public imagRV_adapter(ArrayList<Recipes> respList, RecommendedActivity activity, Boolean IsAdmin){
         this.respList = respList;
         this.context = activity;
-
+        this.IsAdmin = IsAdmin;
     }
     @NonNull
     @Override
@@ -88,6 +89,8 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
                 intent.putExtra("method",r.getMethod());
                 intent.putExtra("recipeDescription",r.getRecipeDescription());
                 intent.putExtra("recipeImage",r.getRecipeImage());
+                intent.putExtra("recipeKey",r.getKey());
+                intent.putExtra("isAdmin",IsAdmin);
 
                 context.startActivity(intent);
 

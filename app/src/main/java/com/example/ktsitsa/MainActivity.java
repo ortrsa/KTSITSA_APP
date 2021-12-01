@@ -10,18 +10,21 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button b1,b2,b3,b4;
+    private Boolean IsAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         initbutton();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, templet_start.class);
+                intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }
         });
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RecommendedActivity.class);
+                intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }
         });
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddRecipes.class);
+                intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }
         });
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }
         });

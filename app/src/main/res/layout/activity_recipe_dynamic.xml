@@ -16,9 +16,13 @@
         android:padding="10dp"
         >
         <LinearLayout
+            android:id="@+id/LLRecipeDynamic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="invisible"
+
+            >
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/Respimage"
@@ -67,9 +71,17 @@
                 android:text="@string/text_ingredients"
                 />
 
-
-
-
+            <CheckBox
+                android:id="@+id/approveCB"
+                android:layout_marginHorizontal="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:cursorVisible="false"
+                android:text="מאושר"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
 
         </LinearLayout>

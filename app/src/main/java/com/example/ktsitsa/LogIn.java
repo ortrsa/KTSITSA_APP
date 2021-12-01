@@ -15,10 +15,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.time.Instant;
 
 public class LogIn extends AppCompatActivity {
-EditText TxtUser, TxtPassword;
+
+
+    private EditText TxtUser, TxtPassword;
     private FirebaseAuth mAuth;
+    private DatabaseReference database;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +52,32 @@ EditText TxtUser, TxtPassword;
         // Check if the user is allredy in (dident sign out)
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null){
-            startActivity(new Intent(LogIn.this, MainActivity.class));// עוברים מסך
+
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("Admin");
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String admins = snapshot.getValue().toString();
+                    if(admins.equals("1")) {
+                        Toast.makeText(LogIn.this, "login as Admin!", Toast.LENGTH_LONG).show();
+                        Intent Aintent = new Intent(LogIn.this, MainActivity.class);
+                        Aintent.putExtra("isAdmin", true);
+                        startActivity(Aintent);
+
+                    }else{
+                        Intent NAintent = new Intent(LogIn.this, MainActivity.class);
+                        NAintent.putExtra("isAdmin", false);
+                        startActivity(NAintent);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
 
 
         }
@@ -65,6 +102,11 @@ EditText TxtUser, TxtPassword;
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {// אם מצליח
                         startActivity(new Intent(LogIn.this, MainActivity.class));// עוברים מסך
+
+                        String uid = mAuth.getCurrentUser().getUid();
+                        database = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Admin");
+                        database.setValue("0");
+
                     } else {// אם לא מצליח
                         Toast.makeText(LogIn.this, "sign-in failed", Toast.LENGTH_LONG).show();// הודעה
                     }
@@ -83,8 +125,33 @@ EditText TxtUser, TxtPassword;
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {// אם מצליח
-                    startActivity(new Intent(LogIn.this, MainActivity.class));// עוברים מסך
+                if (task.isSuccessful()) {
+                    DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("Admin");
+                    database.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String admins = snapshot.getValue().toString();
+                            if(admins.equals("1")) {
+                                Toast.makeText(LogIn.this, "login as Admin!", Toast.LENGTH_LONG).show();
+                                Intent Aintent = new Intent(LogIn.this, MainActivity.class);
+                                Aintent.putExtra("isAdmin", true);
+                                startActivity(Aintent);
+
+                            }else{
+                                Intent NAintent = new Intent(LogIn.this, MainActivity.class);
+                                NAintent.putExtra("isAdmin", false);
+                                startActivity(NAintent);
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
                 } else {// אם לא מצליח
                     Toast.makeText(LogIn.this, "log-in failed", Toast.LENGTH_LONG).show();// הודעה
                 }
