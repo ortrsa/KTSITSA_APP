@@ -11,30 +11,32 @@
         android:id="@+id/txtInstructions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Instructions"
+        android:layout_margin="20dp"
+        android:hint="אופן ההכנה"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.387" />
+        app:layout_constraintVertical_bias="0.322" />
 
     <EditText
         android:id="@+id/TxtIngredients"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ingredients"
+        android:layout_margin="20dp"
+        android:hint="רכיבים"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <RelativeLayout
         android:id="@+id/Rl"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+
         app:layout_constraintBottom_toBottomOf="@+id/HomeBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -71,55 +73,67 @@
             app:layout_constraintVertical_bias="0.023" />
     </RelativeLayout>
 
+
     <EditText
         android:id="@+id/TxtTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="title"
+        android:layout_margin="20dp"
+        android:hint="שם המתכון"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.039" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/BtnAdd"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:onClick="add"
-        android:text="add"
+        android:text="הוסף"
+        android:textColor="#FBEFD2"
+        android:textStyle="bold"
+        app:backgroundTint="@color/prime_color"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.475" />
 
-    <Button
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/BtnAddimag"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:onClick="addimage"
-        android:text="add image"
+        android:text="העלה תמונה"
+        android:textColor="#FBEFD2"
+        android:textStyle="bold"
+        app:backgroundTint="@color/prime_color"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.716" />
+        app:layout_constraintVertical_bias="0.59" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="84dp"
+        android:layout_width="203dp"
+        android:layout_height="138dp"
+        android:layout_marginBottom="70dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtnAddimag"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
 

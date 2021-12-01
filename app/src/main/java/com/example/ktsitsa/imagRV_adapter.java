@@ -54,14 +54,14 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
 
         storageReference = FirebaseStorage.getInstance().getReference(r.getRecipeImage());
         try {
-            File localFile = File.createTempFile("temp" + position ,"jpeg");
+            File localFile = File.createTempFile("temp" + r.getKey() ,"jpeg");
             storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(@NonNull FileDownloadTask.TaskSnapshot taskSnapshot) {
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     holder.SIV.setImageBitmap(bitmap);
                     holder.cardview.setVisibility(View.VISIBLE);
-                    localFile.deleteOnExit();
+                    localFile.delete();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {

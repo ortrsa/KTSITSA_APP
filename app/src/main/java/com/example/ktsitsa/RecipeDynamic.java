@@ -69,6 +69,7 @@ public class RecipeDynamic extends AppCompatActivity {
                 public void onSuccess(@NonNull FileDownloadTask.TaskSnapshot taskSnapshot) {
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     mRecipeImage.setImageBitmap(bitmap);
+                    localFile.delete();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
                 }

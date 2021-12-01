@@ -7,6 +7,7 @@ public class Recipes {
     private String method;
     private String recipeImage;
     private String key;
+    private boolean approved;
 
     public String getKey() {
         return key;
@@ -21,7 +22,15 @@ public class Recipes {
         this.method = method;
         this.recipeIngredients = recipeIngredients;
         this.key = Key;
+        this.approved = false;
+
     }
+
+    public boolean isApproved(){
+        return approved;
+    }
+
+
 
     public String getMethod() {
         return method;

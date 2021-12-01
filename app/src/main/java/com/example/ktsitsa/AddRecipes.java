@@ -92,6 +92,9 @@ public class AddRecipes extends AppCompatActivity {
 
 
         }
+        else{
+            Toast.makeText(this, "missing values, please fill all the fields and upload image ", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

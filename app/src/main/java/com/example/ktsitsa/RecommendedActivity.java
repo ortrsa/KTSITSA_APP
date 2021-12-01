@@ -25,7 +25,6 @@ public class RecommendedActivity extends AppCompatActivity {
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
         startActivity(intent);
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,9 @@ public class RecommendedActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Recipes r = dataSnapshot.getValue(Recipes.class);
-                    RecList.add(r);
+                    if (r.isApproved()) {
+                        RecList.add(r);
+                    }
                 }
 
                 ada.notifyDataSetChanged();
