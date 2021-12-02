@@ -25,6 +25,7 @@ public class RecommendedActivity extends AppCompatActivity {
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
+        intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
     }
     @Override
@@ -36,7 +37,9 @@ public class RecommendedActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference("recipes");
         RecRV = findViewById(R.id.recRV);
         RecRV.setLayoutManager(new LinearLayoutManager(this));
+
         ArrayList<Recipes> RecList  = new ArrayList<>();
+        ArrayList<String> RecListkey  = new ArrayList<>();
 
         imagRV_adapter ada = new imagRV_adapter(RecList,RecommendedActivity.this, IsAdmin);
         RecRV.setAdapter(ada);
@@ -47,9 +50,9 @@ public class RecommendedActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Recipes r = dataSnapshot.getValue(Recipes.class);
-                    if (r.isApproved()|| IsAdmin) {
+                    if ((r.isApproved()|| IsAdmin) && !RecListkey.contains(r.getKey())) {
                         RecList.add(r);
-
+                        RecListkey.add(r.getKey());
                     }
                 }
 

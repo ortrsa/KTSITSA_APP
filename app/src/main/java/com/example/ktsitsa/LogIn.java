@@ -101,7 +101,10 @@ public class LogIn extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {// אם מצליח
-                        startActivity(new Intent(LogIn.this, MainActivity.class));// עוברים מסך
+
+                        Intent NAintent = new Intent(LogIn.this, MainActivity.class);
+                        NAintent.putExtra("isAdmin", false);
+                        startActivity(NAintent);
 
                         String uid = mAuth.getCurrentUser().getUid();
                         database = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Admin");
