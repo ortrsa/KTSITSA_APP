@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, templet_start.class);
+                Intent intent = new Intent(MainActivity.this, RecipesActivity.class);
                 intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }

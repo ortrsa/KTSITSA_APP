@@ -7,30 +7,99 @@
     android:background="#FAF6E8"
     tools:context=".AddRecipes">
 
-    <EditText
-        android:id="@+id/txtInstructions"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="אופן ההכנה"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.322" />
 
-    <EditText
-        android:id="@+id/TxtIngredients"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="רכיבים"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/LLRecipeDynamic"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/BtnAdd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintTop_toTopOf="@+id/Rl"
+        app:layout_constraintVertical_bias="0.855">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TxtTitle1"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="5dp"
+            android:hint="שם המתכון"
+            app:boxBackgroundColor="@color/browser_actions_bg_grey"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:counterTextColor="@color/black"
+            app:hintTextColor="@color/black"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TxtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TxtIngredients1"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="5dp"
+            android:hint="רכיבים"
+            app:boxBackgroundColor="@color/browser_actions_bg_grey"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:counterTextColor="@color/black"
+            app:hintTextColor="@color/black"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TxtIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:keyboardNavigationCluster="true"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInstructions1"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:hint="אופן ההכנה"
+            app:boxBackgroundColor="@color/browser_actions_bg_grey"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:counterTextColor="@color/black"
+            app:hintTextColor="@color/black"
+            android:keyboardNavigationCluster="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/Rl"
@@ -74,20 +143,6 @@
     </RelativeLayout>
 
 
-    <EditText
-        android:id="@+id/TxtTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="שם המתכון"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.039" />
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/BtnAdd"
         android:layout_width="130dp"
@@ -122,19 +177,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
         app:layout_constraintVertical_bias="0.59" />
-
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView6"
         android:layout_width="203dp"
         android:layout_height="138dp"
         android:layout_marginBottom="70dp"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/circleImageView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtnAddimag"
         app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

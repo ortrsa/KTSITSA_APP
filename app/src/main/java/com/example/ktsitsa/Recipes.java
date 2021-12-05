@@ -7,6 +7,7 @@ public class Recipes {
     private String method;
     private String recipeImage;
     private String key;
+    private String uid;
     private boolean approved;
 
     public String getKey() {
@@ -15,7 +16,7 @@ public class Recipes {
 
     public Recipes(){}
 
-    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, String recipeImage, String Key) {
+    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, String recipeImage, String Key, String uid) {
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
         this.recipeImage = recipeImage;
@@ -23,14 +24,16 @@ public class Recipes {
         this.recipeIngredients = recipeIngredients;
         this.key = Key;
         this.approved = false;
-
+        this.uid = uid;
     }
 
     public boolean isApproved(){
         return approved;
     }
 
-
+    public String getUid() {
+        return uid;
+    }
 
     public String getMethod() {
         return method;
@@ -71,4 +74,6 @@ public class Recipes {
     public void setRecipeImage(String recipeImage) {
         this.recipeImage = recipeImage;
     }
+
+
 }

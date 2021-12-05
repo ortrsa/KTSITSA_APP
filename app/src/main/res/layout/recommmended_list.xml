@@ -18,7 +18,7 @@
         app:cardCornerRadius="20dp"
         app:cardBackgroundColor="@color/prime_color_background"
         android:layout_margin="20dp"
-        android:visibility="invisible"
+        android:visibility="gone"
 
         >
         <LinearLayout
@@ -41,7 +41,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:id="@+id/respName"
@@ -63,6 +64,21 @@
                     android:text="תיאור המתכון "
                     android:textAlignment="center"
                     android:textStyle="italic" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Deletbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="מחיקת מתכון"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    app:backgroundTint="@color/prime_color_background"
+                    app:icon="@android:drawable/ic_delete"
+                    app:iconTintMode="multiply"
+                    app:strokeColor="#9C9479"
+                    android:visibility="gone"
+                    app:strokeWidth="@dimen/cardview_compat_inset_shadow"/>
 
 
             </LinearLayout>

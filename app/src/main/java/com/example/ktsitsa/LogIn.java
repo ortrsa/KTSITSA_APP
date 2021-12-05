@@ -52,7 +52,6 @@ public class LogIn extends AppCompatActivity {
         // Check if the user is allredy in (dident sign out)
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null){
-
             DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("Admin");
             database.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -84,10 +83,6 @@ public class LogIn extends AppCompatActivity {
     }
 
 
-    public void HomeBtnClick(View view) {
-
-
-    }
 
     public void sign_up_click(View view) {
         // takes the txt from the login lins and makes them to string

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <activity
+            android:name=".user_not_approved_rec"
+            android:exported="false" />
+        <activity
+            android:name=".user_approved_rec"
+            android:exported="false" />
+        <activity
             android:name=".RecipeDynamic"
             android:exported="false" />
         <activity

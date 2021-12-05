@@ -35,19 +35,25 @@ public class AddRecipes extends AppCompatActivity {
 
 
 
-    String recipeName, recipeIngredients, recipeDescription;
-    FirebaseDatabase db;
-    DatabaseReference dbr;
-    ActivityResultLauncher<String> mGetImage;
-    StorageReference STR;
-    ProgressDialog progressDialog;
-    Uri imageUri;
+    private String recipeName, recipeIngredients, recipeDescription;
+    private FirebaseDatabase db;
+    private DatabaseReference dbr;
+    private ActivityResultLauncher<String> mGetImage;
+    private StorageReference STR;
+    private ProgressDialog progressDialog;
+    private Uri imageUri;
+    private FirebaseAuth mAuth;
+    private String Uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        
+
+        mAuth = FirebaseAuth.getInstance();
+        Uid = mAuth.getCurrentUser().getUid();
+
+
         mGetImage = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
@@ -72,13 +78,13 @@ public class AddRecipes extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
         Date now = new Date();
         String fileName = formatter.format(now);
-        if(!recipeName.isEmpty() && !recipeIngredients.isEmpty() && !recipeDescription.isEmpty() && (imageUri != null)){
+        if(!recipeName.isEmpty() && !recipeIngredients.isEmpty() && !recipeDescription.isEmpty() && (imageUri != null) &&(Uid != null)){
 
             upimage(fileName);
             db = FirebaseDatabase.getInstance();
             dbr = db.getReference("recipes");
             DatabaseReference pushrecipes = dbr.push();
-            Recipes r = new Recipes(recipeName,"method",recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg", pushrecipes.getKey());
+            Recipes r = new Recipes(recipeName,"method",recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg", pushrecipes.getKey(), Uid);
 
             pushrecipes.setValue(r).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
