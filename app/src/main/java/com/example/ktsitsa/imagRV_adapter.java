@@ -88,7 +88,6 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
 
                 intent.putExtra("recipeName",r.getRecipeName());
                 intent.putExtra("recipeIngredients",r.getRecipeIngredients());
-                intent.putExtra("method",r.getMethod());
                 intent.putExtra("recipeDescription",r.getRecipeDescription());
                 intent.putExtra("recipeImage",r.getRecipeImage());
                 intent.putExtra("recipeKey",r.getKey());

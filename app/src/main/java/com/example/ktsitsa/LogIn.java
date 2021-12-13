@@ -87,15 +87,18 @@ public class LogIn extends AppCompatActivity {
     public void sign_up_click(View view) {
         // takes the txt from the login lins and makes them to string
         EditText email = (EditText) findViewById(R.id.TxtEmailAdd);
-        String StrEmail = email.getText().toString();
         EditText Password = (EditText) findViewById(R.id.TxtPasswordAdd);
         String StrPassword = Password.getText().toString();
+        String StrEmail = email.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(StrEmail,StrPassword).addOnCompleteListener(LogIn.this , new OnCompleteListener<AuthResult>() {
+        if(!StrEmail.equals("") && !StrPassword.equals("") &&  StrPassword.length() >= 6 && StrEmail.contains("@") &&  StrEmail.contains(".")) {
+
+
+            mAuth.createUserWithEmailAndPassword(StrEmail, StrPassword).addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
 
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {// אם מצליח
+                    if (task.isSuccessful()) {
 
                         Intent NAintent = new Intent(LogIn.this, MainActivity.class);
                         NAintent.putExtra("isAdmin", false);
@@ -105,12 +108,20 @@ public class LogIn extends AppCompatActivity {
                         database = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Admin");
                         database.setValue("0");
 
-                    } else {// אם לא מצליח
-                        Toast.makeText(LogIn.this, "sign-in failed", Toast.LENGTH_LONG).show();// הודעה
+                    } else {
+                        Toast.makeText(LogIn.this, "לא ניתן להירשם עם פרטים אלה אנא בדוק שם משתמש וסיסמה תקינים!", Toast.LENGTH_LONG).show();// הודעה
                     }
                 }
             });
         }
+        else if(!StrEmail.contains("@") ||  !StrEmail.contains(".")){
+            Toast.makeText(this, "שם המשתמש צריך להיות אימייל תקין!", Toast.LENGTH_SHORT).show();
+        }
+        else if(StrPassword.length() < 6){
+            Toast.makeText(this, "הסיסמה צריכה להיות באורך 6 תווים לפחות!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 
     public void sign_in_click(View view) {
@@ -118,43 +129,46 @@ public class LogIn extends AppCompatActivity {
         String StrEmail = email.getText().toString();
         EditText Password = (EditText) findViewById(R.id.TxtPasswordAdd);
         String StrPassword = Password.getText().toString();
+        if(!StrEmail.equals("") && !StrPassword.equals("")) {
 
-        mAuth.signInWithEmailAndPassword(StrEmail,StrPassword).addOnCompleteListener(LogIn.this , new OnCompleteListener<AuthResult>() {
 
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("Admin");
-                    database.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            String admins = snapshot.getValue().toString();
-                            if(admins.equals("1")) {
-                                Toast.makeText(LogIn.this, "login as Admin!", Toast.LENGTH_LONG).show();
-                                Intent Aintent = new Intent(LogIn.this, MainActivity.class);
-                                Aintent.putExtra("isAdmin", true);
-                                startActivity(Aintent);
+            mAuth.signInWithEmailAndPassword(StrEmail, StrPassword).addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
 
-                            }else{
-                                Intent NAintent = new Intent(LogIn.this, MainActivity.class);
-                                NAintent.putExtra("isAdmin", false);
-                                startActivity(NAintent);
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("Admin");
+                        database.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String admins = snapshot.getValue().toString();
+                                if (admins.equals("1")) {
+                                    Toast.makeText(LogIn.this, "login as Admin!", Toast.LENGTH_LONG).show();
+                                    Intent Aintent = new Intent(LogIn.this, MainActivity.class);
+                                    Aintent.putExtra("isAdmin", true);
+                                    startActivity(Aintent);
+
+                                } else {
+                                    Intent NAintent = new Intent(LogIn.this, MainActivity.class);
+                                    NAintent.putExtra("isAdmin", false);
+                                    startActivity(NAintent);
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                        });
 
 
-                } else {// אם לא מצליח
-                    Toast.makeText(LogIn.this, "log-in failed", Toast.LENGTH_LONG).show();// הודעה
+                    } else {// אם לא מצליח
+                        Toast.makeText(LogIn.this, "לא ניתן להתחבר עם פרטים אלה!", Toast.LENGTH_LONG).show();// הודעה
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
 }

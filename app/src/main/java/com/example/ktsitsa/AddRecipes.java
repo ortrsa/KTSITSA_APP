@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -44,6 +47,9 @@ public class AddRecipes extends AppCompatActivity {
     private Uri imageUri;
     private FirebaseAuth mAuth;
     private String Uid;
+    private Boolean IsAdmin;
+    private TextView IngString;
+    private ArrayList<Ingredients> IngList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +58,16 @@ public class AddRecipes extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         Uid = mAuth.getCurrentUser().getUid();
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+        IngList = getIntent().getExtras().getParcelableArrayList("IngList");
 
+        // get ingredients and set them as text.
+        IngString = findViewById(R.id.ingrid_text);
+        IngString.setText(IngList.toString());
+        IngString.setOnClickListener(v -> onBackPressed());
+        Toast.makeText(this, IngList.toString() + " " + "המרכיבים שנבחרו הם  ", Toast.LENGTH_SHORT).show();
 
+        // select image from phone.
         mGetImage = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
@@ -66,6 +80,7 @@ public class AddRecipes extends AppCompatActivity {
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(AddRecipes.this, MainActivity.class);
+        intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
 
     }
@@ -73,7 +88,7 @@ public class AddRecipes extends AppCompatActivity {
     public void add(View view) {
 
         recipeName = ((EditText) findViewById(R.id.TxtTitle)).getText().toString();
-        recipeIngredients =  ((EditText)findViewById(R.id.TxtIngredients)).getText().toString();
+        recipeIngredients =  IngList.toString();
         recipeDescription = ((EditText) findViewById(R.id.txtInstructions)).getText().toString();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
         Date now = new Date();
@@ -84,15 +99,16 @@ public class AddRecipes extends AppCompatActivity {
             db = FirebaseDatabase.getInstance();
             dbr = db.getReference("recipes");
             DatabaseReference pushrecipes = dbr.push();
-            Recipes r = new Recipes(recipeName,"method",recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg", pushrecipes.getKey(), Uid);
+            Recipes r = new Recipes(recipeName,recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg", pushrecipes.getKey(), Uid);
 
             pushrecipes.setValue(r).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    ((EditText)findViewById(R.id.TxtTitle)).setText("");
-                    ((EditText)findViewById(R.id.TxtIngredients)).setText("");
-                    ((EditText)findViewById(R.id.txtInstructions)).setText("");
+
                     Toast.makeText(AddRecipes.this, "נשמר בהצלחה", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddRecipes.this, MainActivity.class);
+                    intent.putExtra("isAdmin",IsAdmin);
+                    startActivity(intent);
                 }
             });
 
@@ -106,6 +122,7 @@ public class AddRecipes extends AppCompatActivity {
 
     private void upimage(String fileName) {
 
+
         progressDialog = new ProgressDialog(AddRecipes.this);
         progressDialog.setTitle("Uploading File....");
         progressDialog.show();
@@ -118,7 +135,6 @@ public class AddRecipes extends AppCompatActivity {
                     @Override
                     public void onSuccess(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                         ((ImageView)findViewById(R.id.imageView6)).setImageURI(null);
-                        Toast.makeText(AddRecipes.this,"Successfully Uploaded",Toast.LENGTH_SHORT).show();
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
                     }

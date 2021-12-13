@@ -74,7 +74,6 @@ public class RecipeDynamic extends AppCompatActivity {
         String Title = intent.getExtras().getString("recipeName");
         String Ingredients = intent.getExtras().getString("recipeIngredients");
         String Description = intent.getExtras().getString("recipeDescription");
-        String Method = intent.getExtras().getString("method");
         String image = intent.getExtras().getString("recipeImage");
         String Key = intent.getExtras().getString("recipeKey");
         IsAdmin = intent.getExtras().getBoolean("isAdmin");
@@ -92,7 +91,7 @@ public class RecipeDynamic extends AppCompatActivity {
 
         mRecipeName.setText(Title);
         mRecipeIngredients.setText(Ingredients);
-        mRecipeMethod.setText(Method);
+        mRecipeMethod.setText("רכיבים");
         mRecipe.setText(Description);
         storageReference = FirebaseStorage.getInstance().getReference(image);
         try {

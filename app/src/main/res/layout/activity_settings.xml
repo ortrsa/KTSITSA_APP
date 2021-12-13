@@ -47,22 +47,31 @@
             android:onClick="HomeBtnClick"/>
     </RelativeLayout>
 
-    // add here the code
 
-
-
+    <Button
+        android:id="@+id/Btnadding1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="LogOut"
+        android:text="הוספת רכיבים"
+        app:layout_constraintBottom_toTopOf="@+id/BtnLogOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rl"
+        android:visibility="gone"
+         />
 
     <Button
         android:id="@+id/BtnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="LogOut"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.658"
-        android:onClick="LogOut"
-        />
+        app:layout_constraintVertical_bias="0.801" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,33 +49,6 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TxtIngredients1"
-            style="@style/TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="5dp"
-            android:hint="רכיבים"
-            app:boxBackgroundColor="@color/browser_actions_bg_grey"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:counterTextColor="@color/black"
-            app:hintTextColor="@color/black"
-
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/TxtIngredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:keyboardNavigationCluster="true"
-
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtInstructions1"
             style="@style/TextInputLayout"
             android:layout_width="match_parent"
@@ -83,20 +56,44 @@
             android:layout_margin="5dp"
             android:layout_marginTop="5dp"
             android:hint="אופן ההכנה"
+            android:keyboardNavigationCluster="true"
             app:boxBackgroundColor="@color/browser_actions_bg_grey"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:counterTextColor="@color/black"
-            app:hintTextColor="@color/black"
-            android:keyboardNavigationCluster="true">
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtInstructions"
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="רכיבים:"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+
+            android:textStyle="bold|italic" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:id="@+id/ingrid_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="רשימת רכיבים"
+
+
+                android:textAlignment="viewEnd" />
+        </androidx.core.widget.NestedScrollView>
 
 
     </LinearLayout>

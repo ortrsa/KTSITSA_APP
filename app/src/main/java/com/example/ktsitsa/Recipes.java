@@ -4,7 +4,7 @@ public class Recipes {
     private String recipeName;
     private String recipeDescription;
     private String recipeIngredients;
-    private String method;
+
     private String recipeImage;
     private String key;
     private String uid;
@@ -16,11 +16,10 @@ public class Recipes {
 
     public Recipes(){}
 
-    public Recipes(String recipeName,String method, String recipeDescription, String recipeIngredients, String recipeImage, String Key, String uid) {
+    public Recipes(String recipeName, String recipeDescription, String recipeIngredients, String recipeImage, String Key, String uid) {
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
         this.recipeImage = recipeImage;
-        this.method = method;
         this.recipeIngredients = recipeIngredients;
         this.key = Key;
         this.approved = false;
@@ -35,13 +34,6 @@ public class Recipes {
         return uid;
     }
 
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
 
     public String getRecipeIngredients() {
         return recipeIngredients;
