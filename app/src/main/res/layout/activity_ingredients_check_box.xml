@@ -41,10 +41,20 @@
         android:textAlignment="center"
         android:textSize="16dp"
         android:textStyle="bold" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:iconifiedByDefault="false"
+        android:id="@+id/ingSearchView"
+        android:queryHint="חיפוש"
+        />
+
+
     <ListView
         android:id="@+id/ListViewIng"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:choiceMode="multipleChoice"
 
         />

@@ -31,19 +31,16 @@ public class AddIngredient extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ing_Name = ((EditText) findViewById(R.id.TxtingTitle)).getText().toString();
-//                ing_category = ((EditText) findViewById(R.id.TxtingTitle2)).getText().toString();
-//                if(!ing_Name.isEmpty() && !ing_category.isEmpty()){
-                    String toadd = "חומוס,לחם,מלח";
-                    String[] toaddsplit =toadd.split(",");
-                    for (int i = 0; i < toaddsplit.length ; i++) {
+                ing_Name = ((EditText) findViewById(R.id.TxtingTitle)).getText().toString();
+                ing_category = ((EditText) findViewById(R.id.TxtingTitle2)).getText().toString();
+                if(!ing_Name.isEmpty() && !ing_category.isEmpty()){
 
 
                         // add to firebase
                         db = FirebaseDatabase.getInstance();
                         dbr = db.getReference("Ingredients");
                         DatabaseReference pushrecipes = dbr.push();
-                        Ingredients ing = new Ingredients(pushrecipes.getKey(), toaddsplit[i], "בשר");
+                        Ingredients ing = new Ingredients(pushrecipes.getKey(), ing_Name, ing_category);
                         pushrecipes.setValue(ing).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -51,12 +48,8 @@ public class AddIngredient extends AppCompatActivity {
                                 ((EditText) findViewById(R.id.TxtingTitle2)).setText("");
                             }
                         });
-                    }
+                }
 
-
-
-
-//                }
 
 
             }
