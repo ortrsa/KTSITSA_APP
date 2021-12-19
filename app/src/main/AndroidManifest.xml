@@ -40,7 +40,7 @@
             android:name=".AddRecipes"
             android:exported="false" />
         <activity
-            android:name=".RecipesActivity"
+            android:name=".SerchActivity"
             android:exported="false" />
         <activity
             android:name=".LogIn"
