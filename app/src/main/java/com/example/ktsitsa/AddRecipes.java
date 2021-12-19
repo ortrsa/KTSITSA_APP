@@ -101,7 +101,7 @@ public class AddRecipes extends AppCompatActivity {
             db = FirebaseDatabase.getInstance();
             dbr = db.getReference("recipes");
             DatabaseReference pushrecipes = dbr.push();
-            Recipes r = new Recipes(recipeName,recipeIngredients,recipeDescription,"images/" + fileName + ".jpeg", pushrecipes.getKey(), Uid);
+            Recipes r = new Recipes(recipeName,recipeDescription,recipeIngredients,"images/" + fileName + ".jpeg", pushrecipes.getKey(), Uid);
 
             pushrecipes.setValue(r).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
