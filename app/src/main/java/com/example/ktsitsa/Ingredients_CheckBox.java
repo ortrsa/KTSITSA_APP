@@ -36,7 +36,6 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
     private ListView ListViewData;
     private ArrayAdapter<Ingredients> adapter;
-    private ArrayAdapter<String> adapterForCatagories;
     private DatabaseReference db;
     private Button button;
     private Button filter_button;
@@ -45,9 +44,10 @@ public class Ingredients_CheckBox extends AppCompatActivity {
     private ArrayList<String> setOfCategories, filterList;
     private SearchView searchFiled;
     private ArrayList<Integer> curseList;
-    boolean[] checkList;
-    String[] s;
-    ArrayList<Ingredients> filterRes;
+    private boolean[] checkList;
+    private String[] s;
+    private ArrayList<Ingredients> filterRes;
+//    private String prvPage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
                 for(int i=0;i<sp.size();i++){
                     if(sp.valueAt(i)==true){
-                        Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(i);
+                        Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(sp.keyAt(i));
                         selectedList.add(Ing);
                     }
                 }
@@ -115,7 +115,14 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                     intent.putExtra("isAdmin", IsAdmin);
                     intent.putExtra("IngList", selectedList);
                     startActivity(intent);
-                }else {
+                }
+//                else if(sp.size()!=0&& prvPage.equals("find")){
+//                    Intent intent = new Intent(Ingredients_CheckBox.this, RecommendedActivity.class);
+//                    intent.putExtra("isAdmin", IsAdmin);
+//                    intent.putExtra("IngList", selectedList);
+//                    startActivity(intent);
+//                }
+                else {
                     Toast.makeText(Ingredients_CheckBox.this, "בחר לפחות מרכיב אחד ", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -223,6 +230,9 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
         // the user is admin?
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+
+        //from which page you came
+//        prvPage = getIntent().getExtras().getString("prvpage");
 
         //connect to firebase
         db = FirebaseDatabase.getInstance().getReference("Ingredients");

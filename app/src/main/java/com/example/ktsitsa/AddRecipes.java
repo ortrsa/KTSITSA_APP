@@ -46,10 +46,11 @@ public class AddRecipes extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Uri imageUri;
     private FirebaseAuth mAuth;
-    private String Uid;
+    private String Uid,IngListString ;
     private Boolean IsAdmin;
     private TextView IngString;
     private ArrayList<Ingredients> IngList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +61,13 @@ public class AddRecipes extends AppCompatActivity {
         Uid = mAuth.getCurrentUser().getUid();
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         IngList = getIntent().getExtras().getParcelableArrayList("IngList");
+        IngListString = IngList.toString();
 
         // get ingredients and set them as text.
         IngString = findViewById(R.id.ingrid_text);
-        IngString.setText(IngList.toString());
+        IngString.setText(IngListString.substring(1,IngListString.length()-1));
         IngString.setOnClickListener(v -> onBackPressed());
-        Toast.makeText(this, IngList.toString() + " " + "המרכיבים שנבחרו הם  ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ingToString(IngListString), Toast.LENGTH_SHORT).show();
 
         // select image from phone.
         mGetImage = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
@@ -88,7 +90,7 @@ public class AddRecipes extends AppCompatActivity {
     public void add(View view) {
 
         recipeName = ((EditText) findViewById(R.id.TxtTitle)).getText().toString();
-        recipeIngredients =  IngList.toString();
+        recipeIngredients =  ingToString(IngListString);
         recipeDescription = ((EditText) findViewById(R.id.txtInstructions)).getText().toString();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
         Date now = new Date();
@@ -152,6 +154,16 @@ public class AddRecipes extends AppCompatActivity {
 
         mGetImage.launch("image/*");
 
+    }
+
+    public String ingToString(String ingredientsString){
+        String ans = "";
+        String[] splitString = ingredientsString.substring(1,ingredientsString.length() -1).split(",");
+        for(String s: splitString){
+            ans += s + "\n";
+        }
+
+        return ans;
     }
 
 
