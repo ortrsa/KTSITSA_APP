@@ -28,14 +28,32 @@ public class RecommendedActivity extends AppCompatActivity {
     private ArrayList<String> RecListkey;
     private imagRV_adapter ada;
     private SearchView searchView;
-//    private ArrayList<Ingredients> IngList;
+    private ArrayList<Ingredients> IngList;
+    private String IngListString; ///////
 
+
+
+//    private static void search (String s){
+//        String tmp =
+//    }
+//
+//    public String ingToString(String ingredientsString){
+//        String ans = "";
+//        String[] splitString = ingredientsString.substring(1,ingredientsString.length() -1).split(",");
+//        for(String s: splitString){
+//            ans += s + "\n";
+//        }
+//
+//        return ans;
+//    }
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
         intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
     }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +69,7 @@ public class RecommendedActivity extends AppCompatActivity {
 //            filterbyIng();
 //        }
 
-        search();
+      //  search();
 
 
 
@@ -70,7 +88,9 @@ public class RecommendedActivity extends AppCompatActivity {
 //
 //        SetAdapter(afterfilter);
 //    }
+    private void search_by_ing(String s){
 
+    }
     private void search() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -127,7 +147,11 @@ public class RecommendedActivity extends AppCompatActivity {
     private void initData() {
 
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
-//        IngList = getIntent().getExtras().getParcelableArrayList("IngList");
+        IngList = getIntent().getExtras().getParcelableArrayList("IngList");////////
+        if(IngList!=null){
+        IngListString = IngList.toString();
+        }//////
+
         database = FirebaseDatabase.getInstance().getReference("recipes");
 
 
