@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Ktsitsa</string>
     <string name="sign_in">התחבר</string>
+    <string name="src_ing">חיפוש ע"פ רכיבים</string>\
+    <string name="src_name">חיפוש ע"פ שם</string>
     <string name="sign_up">הרשמה</string>
     <string name="logout">התנתק</string>
     <string name="text111">כותרת</string>
