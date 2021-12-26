@@ -31,7 +31,7 @@ public class Search_Options extends AppCompatActivity {
         name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Search_Options.this, Search_by_Name.class);
+                Intent intent = new Intent(Search_Options.this, SearchRecipes.class);
                 intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }
