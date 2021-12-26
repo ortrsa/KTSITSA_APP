@@ -73,16 +73,27 @@
 
             <CheckBox
                 android:id="@+id/approveCB"
-                android:layout_marginHorizontal="150dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="150dp"
                 android:checked="false"
                 android:cursorVisible="false"
-                android:text="מאושר"
+                android:text="@string/approving"
                 android:textAllCaps="false"
                 android:textStyle="bold"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
+            <CheckBox
+                android:id="@+id/recommended"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="150dp"
+                android:checked="false"
+                android:cursorVisible="false"
+                android:text="@string/recommend"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
         </LinearLayout>
 

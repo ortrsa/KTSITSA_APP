@@ -15,4 +15,6 @@
     <string name="add_ing">הוספת רכיב</string>
     <string name="not_app">מתכונים שטרם אושרו</string>
     <string name="app">מתכונים מאושרים</string>
+    <string name="approving">אשר מתכון</string>
+    <string name="recommend">מתכון מומלץ</string>
 </resources>

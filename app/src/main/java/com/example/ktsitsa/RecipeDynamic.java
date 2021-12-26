@@ -39,13 +39,13 @@ public class RecipeDynamic extends AppCompatActivity {
 
 
     private TextView mRecipeName, mRecipeIngredients, mRecipeMethod, mRecipe;
-    private CheckBox checkBox;
+    private CheckBox checkBox,checkBox2;
     private LinearLayout LL;
     private ShapeableImageView mRecipeImage;
     private DatabaseReference database;
     private StorageReference storageReference;
     private ProgressDialog progressDialog;
-    private Boolean IsApproved;
+    private Boolean IsApproved,IsRecommended;
     private FirebaseAuth mAuth;
     private Boolean IsAdmin;
 
@@ -66,6 +66,7 @@ public class RecipeDynamic extends AppCompatActivity {
         mRecipeImage = (ShapeableImageView) findViewById(R.id.Respimage);
         LL = (LinearLayout) findViewById(R.id.LLRecipeDynamic);
         checkBox = (CheckBox) findViewById(R.id.approveCB);
+        checkBox2 = (CheckBox) findViewById(R.id.recommended);
         mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
 
@@ -78,13 +79,20 @@ public class RecipeDynamic extends AppCompatActivity {
         String Key = intent.getExtras().getString("recipeKey");
         IsAdmin = intent.getExtras().getBoolean("isAdmin");
 
-        database = FirebaseDatabase.getInstance().getReference("recipes").child(Key).child("approved");
+        database = FirebaseDatabase.getInstance().getReference("recipes").child(Key);
 
-        database.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        database.child("approved").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 IsApproved = Boolean.parseBoolean(task.getResult().getValue().toString());
                 checkBox.setChecked(IsApproved);
+            }
+        });
+        database.child("recommended").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                IsRecommended = Boolean.parseBoolean(task.getResult().getValue().toString());
+                checkBox2.setChecked(IsRecommended);
             }
         });
 
@@ -126,14 +134,26 @@ public class RecipeDynamic extends AppCompatActivity {
 
         if (IsAdmin) {
             checkBox.setVisibility(View.VISIBLE);
+            checkBox2.setVisibility(View.VISIBLE);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     IsApproved = false;
                     if (isChecked) {
-                        database.setValue(true);
+                        database.child(Key).child("approved").setValue(true);
                     } else {
-                        database.setValue(false);
+                        database.child(Key).child("approved").setValue(false);
+                    }
+                }
+            });
+            checkBox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    IsRecommended = false;
+                    if (isChecked) {
+                        database.child("recommended").setValue(true);
+                    } else {
+                        database.child("recommended").setValue(false);
                     }
                 }
             });

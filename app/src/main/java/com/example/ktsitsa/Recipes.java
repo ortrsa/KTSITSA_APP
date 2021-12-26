@@ -32,6 +32,10 @@ public class Recipes {
         return approved;
     }
 
+    public boolean isRecommended(){
+        return recommended;
+    }
+
     public String getUid() {
         return uid;
     }
