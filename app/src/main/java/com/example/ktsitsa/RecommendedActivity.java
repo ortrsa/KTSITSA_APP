@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecommendedActivity extends AppCompatActivity {
 
@@ -32,20 +33,6 @@ public class RecommendedActivity extends AppCompatActivity {
     private String IngListString; ///////
 
 
-
-//    private static void search (String s){
-//        String tmp =
-//    }
-//
-//    public String ingToString(String ingredientsString){
-//        String ans = "";
-//        String[] splitString = ingredientsString.substring(1,ingredientsString.length() -1).split(",");
-//        for(String s: splitString){
-//            ans += s + "\n";
-//        }
-//
-//        return ans;
-//    }
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
@@ -66,29 +53,30 @@ public class RecommendedActivity extends AppCompatActivity {
         GetDataFromFirebase();
 
 //        if (IngList != null) {
-//            filterbyIng();
+//            search_by_ing();
 //        }
 
-        search();
+//        search();
 
 
 
     }
 
-//    private void filterbyIng() {
-//        ArrayList<Recipes> afterfilter = new ArrayList<>();
-//        afterfilter.addAll(RecList);
-//        for (Recipes R:RecList) {
-//            for (Ingredients I: IngList ){
-//                if(!R.getRecipeIngredients().contains(I.getName())){
-//                    afterfilter.remove(R);
-//                }
-//            }
-//        }
-//
-//        SetAdapter(afterfilter);
-//    }
-    private void search_by_ing(String s){
+
+    private void search_by_ing(){
+        ArrayList<String> SelectedIng = new ArrayList<>(Arrays.asList(IngListString.replace(" ","").split(",")));
+
+        ArrayList<Recipes> SearchRes = new ArrayList<>();
+        for (Recipes rec: RecList){
+            Toast.makeText(this, "rec.getRecipeIngredients()", Toast.LENGTH_SHORT).show();
+            ArrayList<String> recIngList = new ArrayList<>(Arrays.asList(rec.getRecipeIngredients().replace(" ","").split("\n")));
+            if(SelectedIng.containsAll(recIngList)){
+                SearchRes.add(rec);
+            }
+
+        }
+        SetAdapter(SearchRes);
+        ada.notifyDataSetChanged();
 
     }
     private void search() {
@@ -118,10 +106,11 @@ public class RecommendedActivity extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<String> SelectedIng = new ArrayList<>(Arrays.asList(IngListString.replace(" ","").split(",")));
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-
                     Recipes r = dataSnapshot.getValue(Recipes.class);
-                    if ((r.isApproved()) && !RecListkey.contains(r.getKey())) {
+                    ArrayList<String> recIngList = new ArrayList<>(Arrays.asList(r.getRecipeIngredients().replace(" ","").split("\n")));
+                    if ((r.isApproved()) && !RecListkey.contains(r.getKey()) && SelectedIng.containsAll(recIngList)) {
                         RecList.add(r);
                         RecListkey.add(r.getKey());
                     }
@@ -147,10 +136,13 @@ public class RecommendedActivity extends AppCompatActivity {
     private void initData() {
 
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
-        IngList = getIntent().getExtras().getParcelableArrayList("IngList");////////
+        IngList = getIntent().getExtras().getParcelableArrayList("IngList");
         if(IngList!=null){
-        IngListString = IngList.toString();
-        }//////
+            String tempString = IngList.toString();
+            IngListString = tempString.substring(1, tempString.length()-1);
+//            Toast.makeText(this, IngListString, Toast.LENGTH_SHORT).show();
+        }
+
 
         database = FirebaseDatabase.getInstance().getReference("recipes");
 

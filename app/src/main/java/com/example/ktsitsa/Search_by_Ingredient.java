@@ -48,7 +48,6 @@ public class Search_by_Ingredient extends AppCompatActivity {
     private boolean[] checkList;
     private String[] s;
     private ArrayList<Ingredients> filterRes;
-//    private String prvPage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +116,6 @@ public class Search_by_Ingredient extends AppCompatActivity {
                     intent.putExtra("IngList", selectedList);
                     startActivity(intent);
                 }
-//                else if(sp.size()!=0&& prvPage.equals("find")){
-//                    Intent intent = new Intent(Ingredients_CheckBox.this, RecommendedActivity.class);
-//                    intent.putExtra("isAdmin", IsAdmin);
-//                    intent.putExtra("IngList", selectedList);
-//                    startActivity(intent);
-//                }
                 else {
                     Toast.makeText(Search_by_Ingredient.this, "בחר לפחות מרכיב אחד ", Toast.LENGTH_SHORT).show();
                 }
@@ -232,8 +225,6 @@ public class Search_by_Ingredient extends AppCompatActivity {
         // the user is admin?
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
 
-        //from which page you came
-//        prvPage = getIntent().getExtras().getString("prvpage");
 
         //connect to firebase
         db = FirebaseDatabase.getInstance().getReference("Ingredients");
