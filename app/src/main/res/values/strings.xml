@@ -8,6 +8,8 @@
     <string name="text111">כותרת</string>
     <string name="text_ingredients">מרכיבים</string>
     <string name="allRespString">המומלצים</string>
-    <string name="Searching">יש לי בבית..</string>
+    <string name="Searching">חיפוש</string>
+    <string name="Search_name">חיפוש לפי שם</string>
+    <string name="Search_ing">יש לי בבית...</string>
     <string name="waiting_recepies">ממתינים לאישור</string>
 </resources>
