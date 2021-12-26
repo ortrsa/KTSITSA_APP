@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <activity
+            android:name=".SearchRecipes"
+            android:exported="false" />
+        <activity
             android:name=".Waiting_For_Approve"
             android:exported="false" />
         <activity
