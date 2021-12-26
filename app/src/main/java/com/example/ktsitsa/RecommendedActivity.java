@@ -121,7 +121,7 @@ public class RecommendedActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Recipes r = dataSnapshot.getValue(Recipes.class);
-                    if ((r.isApproved()|| IsAdmin) && !RecListkey.contains(r.getKey())) {
+                    if ((r.isApproved()) && !RecListkey.contains(r.getKey())) {
                         RecList.add(r);
                         RecListkey.add(r.getKey());
                     }

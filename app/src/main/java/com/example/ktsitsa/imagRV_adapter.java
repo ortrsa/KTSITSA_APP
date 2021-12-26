@@ -100,7 +100,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
 
         //If this is the user that add this recipe he can delete it!
         String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        if(r.getUid().equals(Uid)) {
+        if(r.getUid().equals(Uid)||IsAdmin) {
             holder.Delete.setVisibility(View.VISIBLE);
             holder.Delete.setOnClickListener(new View.OnClickListener() {
                 @Override
