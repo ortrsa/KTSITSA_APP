@@ -9,6 +9,7 @@ public class Recipes {
     private String key;
     private String uid;
     private boolean approved;
+    private boolean recommended;
 
     public String getKey() {
         return key;
@@ -24,6 +25,7 @@ public class Recipes {
         this.key = Key;
         this.approved = false;
         this.uid = uid;
+        this.recommended = false;
     }
 
     public boolean isApproved(){

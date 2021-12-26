@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RecommendedActivity extends AppCompatActivity {
+public class ResultsSearchByIngActivity extends AppCompatActivity {
 
     private RecyclerView RecRV ;
     private DatabaseReference database;
@@ -35,7 +34,7 @@ public class RecommendedActivity extends AppCompatActivity {
 
 
     public void HomeBtnClick(View view) {
-        Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
+        Intent intent = new Intent(ResultsSearchByIngActivity.this, MainActivity.class);
         intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
     }
@@ -44,7 +43,7 @@ public class RecommendedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommended);
+        setContentView(R.layout.activity_resultssrearchbying);
 
         initData();
 
@@ -86,7 +85,7 @@ public class RecommendedActivity extends AppCompatActivity {
     }
 
     private void SetAdapter(ArrayList<Recipes> arrList) {
-        ada = new imagRV_adapter(arrList,RecommendedActivity.this, IsAdmin);
+        ada = new imagRV_adapter(arrList, ResultsSearchByIngActivity.this, IsAdmin);
         RecRV.setAdapter(ada);
     }
 

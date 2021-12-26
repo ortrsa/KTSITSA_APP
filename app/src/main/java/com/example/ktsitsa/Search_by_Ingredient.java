@@ -4,15 +4,11 @@ package com.example.ktsitsa;
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AlertDialog;
         import androidx.appcompat.app.AppCompatActivity;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import androidx.recyclerview.widget.RecyclerView;
 
         import android.content.DialogInterface;
         import android.content.Intent;
         import android.os.Bundle;
         import android.util.SparseBooleanArray;
-        import android.view.ContextMenu;
-        import android.view.MenuItem;
         import android.view.View;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
@@ -27,10 +23,6 @@ package com.example.ktsitsa;
         import com.google.firebase.database.ValueEventListener;
 
         import java.util.ArrayList;
-        import java.util.Arrays;
-        import java.util.HashSet;
-        import java.util.Locale;
-        import java.util.Set;
 
 public class Search_by_Ingredient extends AppCompatActivity {
 
@@ -111,7 +103,7 @@ public class Search_by_Ingredient extends AppCompatActivity {
                     }
                 }
                 if(sp.size()!=0) {
-                    Intent intent = new Intent(Search_by_Ingredient.this, RecommendedActivity.class);
+                    Intent intent = new Intent(Search_by_Ingredient.this, ResultsSearchByIngActivity.class);
                     intent.putExtra("isAdmin", IsAdmin);
                     intent.putExtra("IngList", selectedList);
                     startActivity(intent);
