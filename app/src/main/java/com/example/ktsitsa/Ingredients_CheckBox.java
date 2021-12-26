@@ -3,15 +3,11 @@ package com.example.ktsitsa;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,10 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
 
 public class Ingredients_CheckBox extends AppCompatActivity {
 
@@ -43,10 +35,10 @@ public class Ingredients_CheckBox extends AppCompatActivity {
     private ArrayList<Ingredients> selectedList,ingList ;
     private ArrayList<String> setOfCategories;
     private SearchView searchFiled;
-    private ArrayList<Integer> curseList;
+    private ArrayList<Integer> ChackNumInList;
     private boolean[] checkList;
-    private String[] s;
-    private ArrayList<Ingredients> filterRes;
+    private String[] AllCategoruesList;
+    private ArrayList<Ingredients> filterRes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +74,19 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                 ArrayList<Ingredients> SearchRes = new ArrayList<>();
                 for (Ingredients ing: ingList){
                     if(ing.getName().toLowerCase().contains(newText.toLowerCase())){
-                        SearchRes.add(ing);
+                       if(filterRes.size() == 0) {
+                           SearchRes.add(ing);
+                       }
+                       else{
+                           for (int i = 0; i < ChackNumInList.size(); i++) {
+                               if(ing.getCategory().equals(AllCategoruesList[ChackNumInList.get(i)])){
+                                   SearchRes.add(ing);
+                                   break;
+                               }
+                           }
+
+                       }
+
                     }
                 }
                 setadapter(SearchRes);
@@ -104,7 +108,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                 selectedList= new ArrayList<>();
 
                 for(int i=0;i<sp.size();i++){
-                    if(sp.valueAt(i)==true){
+                    if(sp.valueAt(i)){
                         Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(sp.keyAt(i));
                         selectedList.add(Ing);
                     }
@@ -128,20 +132,22 @@ public class Ingredients_CheckBox extends AppCompatActivity {
             filter_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                searchFiled.setQuery("",false);
+                searchFiled.clearFocus();
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ingredients_CheckBox.this);
                 builder.setTitle(" סינון קטגוריות ");
                 builder.setCancelable(false);
 
 
-                builder.setMultiChoiceItems(s, checkList, new DialogInterface.OnMultiChoiceClickListener() {
+                builder.setMultiChoiceItems(AllCategoruesList, checkList, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
                         if(isChecked){
-                            curseList.add(which);
-                            Toast.makeText(Ingredients_CheckBox.this, s[which], Toast.LENGTH_SHORT).show();
+                            ChackNumInList.add(which);
+                            Toast.makeText(Ingredients_CheckBox.this, AllCategoruesList[which], Toast.LENGTH_SHORT).show();
                         }else {
-                            curseList.remove((Object)which);
+                            ChackNumInList.remove((Object)which);
                         }
                     }
                 }).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
@@ -150,9 +156,9 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                         filterRes = new ArrayList<>();
 
                         for (int i = 0; i < ingList.size(); i++) {
-                            for (int j = 0; j < curseList.size(); j++) {
+                            for (int j = 0; j < ChackNumInList.size(); j++) {
 
-                                if(ingList.get(i).getCategory().equals(s[curseList.get(j)])){
+                                if(ingList.get(i).getCategory().equals(AllCategoruesList[ChackNumInList.get(j)])){
                                   filterRes.add(ingList.get(i));
                                   break;
                                 }
@@ -197,9 +203,9 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                     ingList.add(ing);
 
                 }
-                s = new String[setOfCategories.size()];
+                AllCategoruesList = new String[setOfCategories.size()];
                 for (int i = 0; i < setOfCategories.size(); i++) {
-                    s[i] = setOfCategories.get(i);
+                    AllCategoruesList[i] = setOfCategories.get(i);
                 }
                 checkList = new boolean[setOfCategories.size()+1];
                 adapter.notifyDataSetChanged();
@@ -214,7 +220,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
     }
 
     private void setadapter(ArrayList<Ingredients> arr) {
-        adapter = new ArrayAdapter<Ingredients>(this,
+        adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_multiple_choice, arr);
         ListViewData.setAdapter(adapter);
 
@@ -236,7 +242,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
         searchFiled = findViewById(R.id.ingSearchView);
         ingList = new ArrayList<>();
         setOfCategories = new ArrayList<>();
-        curseList = new ArrayList<>();
+        ChackNumInList = new ArrayList<>();
 
 
 
