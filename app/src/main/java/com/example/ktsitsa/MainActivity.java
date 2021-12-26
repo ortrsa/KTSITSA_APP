@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainSearchActivity.class);
-                intent.putExtra("isAdmin",IsAdmin);
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, Search_by_Ingredient.class);
+                    intent.putExtra("isAdmin",IsAdmin);
+                    startActivity(intent);
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {

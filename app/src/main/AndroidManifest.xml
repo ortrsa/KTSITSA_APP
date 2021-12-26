@@ -43,9 +43,6 @@
             android:name=".AddRecipes"
             android:exported="false" />
         <activity
-            android:name=".MainSearchActivity"
-            android:exported="false" />
-        <activity
             android:name=".LogIn"
             android:exported="true" >
             <intent-filter>

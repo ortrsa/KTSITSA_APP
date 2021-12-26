@@ -69,7 +69,7 @@ public class RecommendedActivity extends AppCompatActivity {
 //            filterbyIng();
 //        }
 
-      //  search();
+        search();
 
 
 
