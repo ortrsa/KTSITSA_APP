@@ -25,14 +25,25 @@ public class SettingsActivity extends AppCompatActivity {
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         initbutton();
         Button adding = findViewById(R.id.Btnadding1);
+        Button approving = findViewById(R.id.BtnAdminNotApp);
 
         if(IsAdmin){
           adding.setVisibility(View.VISIBLE);
+          approving.setVisibility(View.VISIBLE);
         }
         adding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingsActivity.this, AddIngredient.class);
+                intent.putExtra("isAdmin",IsAdmin);
+                startActivity(intent);
+            }
+        });
+
+        approving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, Waiting_For_Approve.class);
                 intent.putExtra("isAdmin",IsAdmin);
                 startActivity(intent);
             }
