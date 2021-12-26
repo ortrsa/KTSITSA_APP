@@ -42,14 +42,7 @@
     </RelativeLayout>
 
 
-    <SearchView
-        android:id="@+id/rspSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="חיפוש..."
 
-        />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

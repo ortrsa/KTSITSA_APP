@@ -58,28 +58,6 @@ public class RecommendedActivity extends AppCompatActivity {
     }
 
 
-//    private void search() {
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                ArrayList<Recipes> SearchRes = new ArrayList<>();
-//                for (Recipes rec: RecList){
-//                    if(rec.getRecipeName().toLowerCase().contains(newText.toLowerCase())){
-//                        SearchRes.add(rec);
-//                    }
-//                }
-//                SetAdapter(SearchRes);
-//                ada.notifyDataSetChanged();
-//                return false;
-//            }
-//        });
-//
-//    }
 
     private void GetDataFromFirebase() {
         database.addValueEventListener(new ValueEventListener() {
@@ -128,7 +106,7 @@ public class RecommendedActivity extends AppCompatActivity {
 
         RecRV = findViewById(R.id.recRV);
         RecRV.setLayoutManager(new LinearLayoutManager(this));
-        searchView = findViewById(R.id.rspSearchView);
+
 
         RecList  = new ArrayList<>();
         RecListkey  = new ArrayList<>();

@@ -41,13 +41,12 @@ public class Ingredients_CheckBox extends AppCompatActivity {
     private Button filter_button;
     private Boolean IsAdmin;
     private ArrayList<Ingredients> selectedList,ingList ;
-    private ArrayList<String> setOfCategories, filterList;
+    private ArrayList<String> setOfCategories;
     private SearchView searchFiled;
     private ArrayList<Integer> curseList;
     private boolean[] checkList;
     private String[] s;
     private ArrayList<Ingredients> filterRes;
-//    private String prvPage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -238,7 +237,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
         ingList = new ArrayList<>();
         setOfCategories = new ArrayList<>();
         curseList = new ArrayList<>();
-        filterList =new ArrayList<>();
+
 
 
 

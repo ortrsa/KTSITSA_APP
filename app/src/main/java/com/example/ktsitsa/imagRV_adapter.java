@@ -2,6 +2,7 @@ package com.example.ktsitsa;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -98,7 +100,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
             }
         });
 
-        //If this is the user that add this recipe he can delete it!
+        //If this is the user that add this recipe (or Admin) he can delete it!
         String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         if(r.getUid().equals(Uid)||IsAdmin) {
             holder.Delete.setVisibility(View.VISIBLE);
@@ -106,10 +108,27 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
                 @Override
                 public void onClick(View v) {
 
-                    DatabaseReference database = FirebaseDatabase.getInstance().getReference("recipes").child(r.getKey());
-                    database.removeValue();
-                    respList.remove(r);
-                    Toast.makeText(context, "Recipe Delete!", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle(" מחיקת מתכון ");
+                    builder.setCancelable(false);
+                    builder.setMessage("האם אתה בטוח שברצונך למחוק את המתכון?").setPositiveButton("מחק", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            DatabaseReference database = FirebaseDatabase.getInstance().getReference("recipes").child(r.getKey());
+                            database.removeValue();
+                            respList.remove(r);
+                            Toast.makeText(context, "Recipe Delete!", Toast.LENGTH_SHORT).show();
+                        }
+                    }).setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+
+
+
                 }
             });
         }
