@@ -51,39 +51,36 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/Btnadding1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="LogOut"
-        android:text="הוספת רכיבים"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="@string/add_ing"
         android:textColor="#FBEFD2"
         android:textStyle="bold"
         android:visibility="gone"
         app:backgroundTint="@color/prime_color"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/BtnLogOut"
-        app:layout_constraintEnd_toStartOf="@+id/BtnAdminNotApp"
-        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/BtnAdminNotApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="LogOut"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:text="@string/waiting_recepies"
+        android:textColor="#FBEFD2"
+        android:textStyle="bold"
         android:visibility="gone"
         app:backgroundTint="@color/prime_color"
-        android:textColor="#FBEFD2"
         app:cornerRadius="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/BtnLogOut"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintTop_toBottomOf="@+id/approvedrec"
+        app:layout_constraintVertical_bias="0.136" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/BtnLogOut"
@@ -91,15 +88,16 @@
         android:layout_height="wrap_content"
         android:onClick="LogOut"
         android:text="@string/logout"
-        app:backgroundTint="@color/prime_color"
-        android:textStyle="bold"
         android:textColor="#FBEFD2"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@color/prime_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.801" />
+        app:layout_constraintVertical_bias="0.898" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/approvedrec"
@@ -115,7 +113,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rl"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/notapprovedrec"
@@ -124,14 +122,15 @@
         android:text="מתכונים לא מאושרים"
         android:textColor="#FBEFD2"
         android:textStyle="bold"
+        android:visibility="gone"
         app:backgroundTint="@color/prime_color"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/BtnLogOut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/approvedrec"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintVertical_bias="0.18" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

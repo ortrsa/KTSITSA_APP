@@ -12,4 +12,5 @@
     <string name="Search_name">חיפוש לפי שם</string>
     <string name="Search_ing">יש לי בבית...</string>
     <string name="waiting_recepies">ממתינים לאישור</string>
+    <string name="add_ing">הוספת רכיב</string>
 </resources>

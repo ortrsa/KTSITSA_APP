@@ -31,6 +31,9 @@ public class SettingsActivity extends AppCompatActivity {
           adding.setVisibility(View.VISIBLE);
           approving.setVisibility(View.VISIBLE);
         }
+        else {
+            b2.setVisibility(View.VISIBLE);
+        }
         adding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
