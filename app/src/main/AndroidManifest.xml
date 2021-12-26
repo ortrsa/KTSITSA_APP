@@ -13,6 +13,9 @@
             android:name=".Search_Options"
             android:exported="false" />
         <activity
+            android:name=".SearchRecipes"
+            android:exported="false" />
+        <activity
             android:name=".Waiting_For_Approve"
             android:exported="false" />
         <activity

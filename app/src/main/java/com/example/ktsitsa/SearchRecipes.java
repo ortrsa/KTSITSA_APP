@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RecommendedActivity extends AppCompatActivity {
+public class SearchRecipes extends AppCompatActivity {
 
     private RecyclerView RecRV ;
     private DatabaseReference database;
@@ -32,64 +31,28 @@ public class RecommendedActivity extends AppCompatActivity {
     private ArrayList<Ingredients> IngList;
     private String IngListString;
 
-
-
-    public void HomeBtnClick(View view) {
-        Intent intent = new Intent(RecommendedActivity.this, MainActivity.class);
-        intent.putExtra("isAdmin",IsAdmin);
-        startActivity(intent);
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommended);
+        setContentView(R.layout.activity_search_recipes);
 
         initData();
 
         SetAdapter(RecList);
 
         GetDataFromFirebase();
-
-
-
+        search();
 
     }
 
-
-//    private void search() {
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                ArrayList<Recipes> SearchRes = new ArrayList<>();
-//                for (Recipes rec: RecList){
-//                    if(rec.getRecipeName().toLowerCase().contains(newText.toLowerCase())){
-//                        SearchRes.add(rec);
-//                    }
-//                }
-//                SetAdapter(SearchRes);
-//                ada.notifyDataSetChanged();
-//                return false;
-//            }
-//        });
-//
-//    }
-
     private void GetDataFromFirebase() {
+
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<String> SelectedIng = new ArrayList<>(Arrays.asList(IngListString.replace(" ","").split(",")));
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Recipes r = dataSnapshot.getValue(Recipes.class);
-                    ArrayList<String> recIngList = new ArrayList<>(Arrays.asList(r.getRecipeIngredients().replace(" ","").split("\n")));
-                    if ((r.isApproved()) && !RecListkey.contains(r.getKey()) && SelectedIng.containsAll(recIngList)) {
+                    if ((r.isApproved()) && !RecListkey.contains(r.getKey())) {
                         RecList.add(r);
                         RecListkey.add(r.getKey());
                     }
@@ -107,12 +70,8 @@ public class RecommendedActivity extends AppCompatActivity {
         });
     }
 
-    private void SetAdapter(ArrayList<Recipes> arrList) {
-        ada = new imagRV_adapter(arrList,RecommendedActivity.this, IsAdmin);
-        RecRV.setAdapter(ada);
-    }
-
     private void initData() {
+
 
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         IngList = getIntent().getExtras().getParcelableArrayList("IngList");
@@ -133,6 +92,37 @@ public class RecommendedActivity extends AppCompatActivity {
         RecList  = new ArrayList<>();
         RecListkey  = new ArrayList<>();
 
+    }
+
+    public void HomeBtnClickSearchRecipes(View view) {
+        Intent intent = new Intent(SearchRecipes.this, MainActivity.class);
+        intent.putExtra("isAdmin",IsAdmin);
+        startActivity(intent);
+    }
+    private void SetAdapter(ArrayList<Recipes> arrList) {
+        ada = new imagRV_adapter(arrList,SearchRecipes.this, IsAdmin);
+        RecRV.setAdapter(ada);
+    }
+    private void search() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<Recipes> SearchRes = new ArrayList<>();
+                for (Recipes rec: RecList){
+                    if(rec.getRecipeName().toLowerCase().contains(newText.toLowerCase())){
+                        SearchRes.add(rec);
+                    }
+                }
+                SetAdapter(SearchRes);
+                ada.notifyDataSetChanged();
+                return false;
+            }
+        });
 
     }
 }
