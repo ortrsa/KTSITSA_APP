@@ -8,23 +8,33 @@
     tools:context=".Search_Options">
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView3"
+    <RelativeLayout
+        android:id="@+id/Rl"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        app:srcCompat="@drawable/charles_deluvio_d_vdqmtfaau_unsplash" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:srcCompat="@drawable/charles_deluvio_d_vdqmtfaau_unsplash" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/HomeBtn1"
@@ -45,11 +55,10 @@
         android:textSize="40dp"
         android:textStyle="bold|italic"
         android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.243" />
+        app:layout_constraintEnd_toEndOf="@+id/Rl"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/Rl"
+        app:layout_constraintTop_toBottomOf="@+id/Rl" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSearchIng"

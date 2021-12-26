@@ -60,7 +60,6 @@ public class SearchRecipes extends AppCompatActivity {
 
                 ada.notifyDataSetChanged();
 
-
             }
 
             @Override
@@ -74,20 +73,10 @@ public class SearchRecipes extends AppCompatActivity {
 
 
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
-        IngList = getIntent().getExtras().getParcelableArrayList("IngList");
-        if(IngList!=null){
-            String tempString = IngList.toString();
-            IngListString = tempString.substring(1, tempString.length()-1);
-//            Toast.makeText(this, IngListString, Toast.LENGTH_SHORT).show();
-        }
-
-
         database = FirebaseDatabase.getInstance().getReference("recipes");
-
-
-        RecRV = findViewById(R.id.recRV);
+        RecRV = findViewById(R.id.recRVSearchRecipes);
         RecRV.setLayoutManager(new LinearLayoutManager(this));
-        searchView = findViewById(R.id.rspSearchView);
+        searchView = findViewById(R.id.rspSearchViewSearchRecipes);
 
         RecList  = new ArrayList<>();
         RecListkey  = new ArrayList<>();
