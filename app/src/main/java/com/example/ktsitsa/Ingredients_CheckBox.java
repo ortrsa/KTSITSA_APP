@@ -116,12 +116,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                     intent.putExtra("IngList", selectedList);
                     startActivity(intent);
                 }
-//                else if(sp.size()!=0&& prvPage.equals("find")){
-//                    Intent intent = new Intent(Ingredients_CheckBox.this, RecommendedActivity.class);
-//                    intent.putExtra("isAdmin", IsAdmin);
-//                    intent.putExtra("IngList", selectedList);
-//                    startActivity(intent);
-//                }
+
                 else {
                     Toast.makeText(Ingredients_CheckBox.this, "בחר לפחות מרכיב אחד ", Toast.LENGTH_SHORT).show();
                 }
@@ -231,8 +226,6 @@ public class Ingredients_CheckBox extends AppCompatActivity {
         // the user is admin?
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
 
-        //from which page you came
-//        prvPage = getIntent().getExtras().getString("prvpage");
 
         //connect to firebase
         db = FirebaseDatabase.getInstance().getReference("Ingredients");
