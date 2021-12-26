@@ -13,4 +13,6 @@
     <string name="Search_ing">יש לי בבית...</string>
     <string name="waiting_recepies">ממתינים לאישור</string>
     <string name="add_ing">הוספת רכיב</string>
+    <string name="not_app">מתכונים שטרם אושרו</string>
+    <string name="app">מתכונים מאושרים</string>
 </resources>
