@@ -140,9 +140,9 @@ public class RecipeDynamic extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     IsApproved = false;
                     if (isChecked) {
-                        database.child(Key).child("approved").setValue(true);
+                        database.child("approved").setValue(true);
                     } else {
-                        database.child(Key).child("approved").setValue(false);
+                        database.child("approved").setValue(false);
                     }
                 }
             });
