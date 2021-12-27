@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -52,6 +53,8 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
         getDataFromFirebase();
 
+        onclickListner();
+
         search_Filed();
 
         Filter_button_click();
@@ -60,6 +63,22 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
 
 
+    }
+
+    private void onclickListner() {
+        ListViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(position);
+                if(ListViewData.isItemChecked(position)) {
+                    Ing.setSelected(true);
+                    selectedList.add(Ing);
+                }else{
+                    Ing.setSelected(false);
+                    selectedList.remove(Ing);
+                }
+            }
+        });
     }
 
     private void search_Filed() {
@@ -104,17 +123,8 @@ public class Ingredients_CheckBox extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SparseBooleanArray sp = ListViewData.getCheckedItemPositions();
 
-                selectedList= new ArrayList<>();
-
-                for(int i=0;i<sp.size();i++){
-                    if(sp.valueAt(i)){
-                        Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(sp.keyAt(i));
-                        selectedList.add(Ing);
-                    }
-                }
-                if(sp.size()!=0) {
+                if(selectedList.size()!=0) {
                     Intent intent = new Intent(Ingredients_CheckBox.this, AddRecipes.class);
                     intent.putExtra("isAdmin", IsAdmin);
                     intent.putExtra("IngList", selectedList);
@@ -196,7 +206,6 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                         setOfCategories.add(ing.getCategory());
                     }
 
-
                     ingList.add(ing);
 
                 }
@@ -217,9 +226,17 @@ public class Ingredients_CheckBox extends AppCompatActivity {
     }
 
     private void setadapter(ArrayList<Ingredients> arr) {
+
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_multiple_choice, arr);
         ListViewData.setAdapter(adapter);
+
+        for (int i = 0; i <ListViewData.getCount() ; i++) {
+            if(((Ingredients)ListViewData.getItemAtPosition(i)).isSelected()){
+                ListViewData.setItemChecked(i,true);
+            }
+        }
+
 
     }
 
@@ -240,7 +257,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
         ingList = new ArrayList<>();
         setOfCategories = new ArrayList<>();
         ChackNumInList = new ArrayList<>();
-
+        selectedList= new ArrayList<>();
 
 
 

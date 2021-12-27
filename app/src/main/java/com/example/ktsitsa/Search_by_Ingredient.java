@@ -10,6 +10,7 @@ package com.example.ktsitsa;
         import android.os.Bundle;
         import android.util.SparseBooleanArray;
         import android.view.View;
+        import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.ListView;
@@ -53,6 +54,8 @@ public class Search_by_Ingredient extends AppCompatActivity {
 
         getDataFromFirebase();
 
+        onclickListner();
+
         search_Filed();
 
         Filter_button_click();
@@ -93,17 +96,8 @@ public class Search_by_Ingredient extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SparseBooleanArray sp = ListViewData.getCheckedItemPositions();
 
-                selectedList= new ArrayList<>();
-
-                for(int i=0;i<sp.size();i++){
-                    if(sp.valueAt(i)==true){
-                        Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(sp.keyAt(i));
-                        selectedList.add(Ing);
-                    }
-                }
-                if(sp.size()!=0) {
+                if(selectedList.size()!=0) {
                     Intent intent = new Intent(Search_by_Ingredient.this, ResultsSearchByIngActivity.class);
                     intent.putExtra("isAdmin", IsAdmin);
                     intent.putExtra("IngList", selectedList);
@@ -178,10 +172,10 @@ public class Search_by_Ingredient extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Ingredients ing = dataSnapshot.getValue(Ingredients.class);
+                    // while getting data from firebase update the category list for filtering by category
                     if(!setOfCategories.contains(ing.getCategory())) {
                         setOfCategories.add(ing.getCategory());
                     }
-
 
                     ingList.add(ing);
 
@@ -207,6 +201,12 @@ public class Search_by_Ingredient extends AppCompatActivity {
                 android.R.layout.simple_list_item_multiple_choice, arr);
         ListViewData.setAdapter(adapter);
 
+        for (int i = 0; i <ListViewData.getCount() ; i++) {
+            if(((Ingredients)ListViewData.getItemAtPosition(i)).isSelected()){
+                ListViewData.setItemChecked(i,true);
+            }
+        }
+
     }
 
     private void initData() {
@@ -227,9 +227,26 @@ public class Search_by_Ingredient extends AppCompatActivity {
         setOfCategories = new ArrayList<>();
         curseList = new ArrayList<>();
         filterList =new ArrayList<>();
+        selectedList= new ArrayList<>();
 
 
 
+    }
+
+    private void onclickListner() {
+        ListViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Ingredients Ing= (Ingredients) ListViewData.getItemAtPosition(position);
+                if(ListViewData.isItemChecked(position)) {
+                    Ing.setSelected(true);
+                    selectedList.add(Ing);
+                }else{
+                    Ing.setSelected(false);
+                    selectedList.remove(Ing);
+                }
+            }
+        });
     }
 
 

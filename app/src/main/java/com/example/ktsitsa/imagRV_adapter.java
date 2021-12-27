@@ -59,7 +59,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
         //Get the recipe from respList
         final Recipes r = respList.get(position);
         holder.respName.setText(r.getRecipeName());
-        holder.respdisc.setText(r.getRecipeDescription());
+        holder.respdisc.setText(r.getRecipeIngredients());
 
         // Get the recipe image from firebase
         storageReference = FirebaseStorage.getInstance().getReference(r.getRecipeImage());

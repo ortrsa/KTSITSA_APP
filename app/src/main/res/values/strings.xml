@@ -17,4 +17,6 @@
     <string name="app">מתכונים מאושרים</string>
     <string name="approving">אשר מתכון</string>
     <string name="recommend">מתכון מומלץ</string>
+    <string name="send_notification_text">שלח התראה</string>
+    <string name="LOGO">K T S I T S A</string>
 </resources>

@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button b1,b2,adding,approving;
+    private Button b1,b2,adding,approving, send_notify_bnt;
     private Boolean IsAdmin;
 
     @Override
@@ -33,6 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         if(IsAdmin){
             adding.setVisibility(View.VISIBLE);
             approving.setVisibility(View.VISIBLE);
+            send_notify_bnt.setVisibility(View.VISIBLE);
         }
         else {
             b2.setVisibility(View.VISIBLE);
@@ -75,10 +76,20 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        send_notify_bnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, send_notification.class);
+                intent.putExtra("isAdmin",IsAdmin);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+        intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
 
     }
@@ -95,6 +106,7 @@ public class SettingsActivity extends AppCompatActivity {
         b2 = findViewById(R.id.notapprovedrec);
         adding = findViewById(R.id.Btnadding1);
         approving = findViewById(R.id.BtnAdminNotApp);
+        send_notify_bnt = findViewById(R.id.sendnot);
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
 
     }
