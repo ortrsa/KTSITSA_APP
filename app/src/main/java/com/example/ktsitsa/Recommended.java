@@ -32,7 +32,7 @@ public class Recommended extends AppCompatActivity {
     private String IngListString;
 
 
-
+    //Returns to main menu screen
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(Recommended.this, MainActivity.class);
         intent.putExtra("isAdmin",IsAdmin);
@@ -60,12 +60,11 @@ public class Recommended extends AppCompatActivity {
 
     private void GetDataFromFirebase() {
         database.addValueEventListener(new ValueEventListener() {
+            //checks if data has been changed on firebase and update if it did
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                ArrayList<String> SelectedIng = new ArrayList<>(Arrays.asList(IngListString.replace(" ","").split(",")));
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Recipes r = dataSnapshot.getValue(Recipes.class);
-//                    ArrayList<String> recIngList = new ArrayList<>(Arrays.asList(r.getRecipeIngredients().replace(" ","").split("\n")));
                     if ((r.isApproved()) && !RecListkey.contains(r.getKey()) && r.isRecommended()) {
                         RecList.add(r);
                         RecListkey.add(r.getKey());
@@ -90,26 +89,18 @@ public class Recommended extends AppCompatActivity {
     }
 
     private void initData() {
-
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         IngList = getIntent().getExtras().getParcelableArrayList("IngList");
         if(IngList!=null){
             String tempString = IngList.toString();
             IngListString = tempString.substring(1, tempString.length()-1);
-//            Toast.makeText(this, IngListString, Toast.LENGTH_SHORT).show();
         }
 
-
         database = FirebaseDatabase.getInstance().getReference("recipes");
-
-
         RecRV = findViewById(R.id.recRV);
         RecRV.setLayoutManager(new LinearLayoutManager(this));
-
-
         RecList  = new ArrayList<>();
         RecListkey  = new ArrayList<>();
-
 
     }
 }

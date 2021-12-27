@@ -32,13 +32,12 @@ public class ResultsSearchByIngActivity extends AppCompatActivity {
     private String IngListString;
 
 
-
+    //Returns to main menu screen
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(ResultsSearchByIngActivity.this, MainActivity.class);
         intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +50,10 @@ public class ResultsSearchByIngActivity extends AppCompatActivity {
 
         GetDataFromFirebase();
 
-
-
-
     }
 
-
-
+    //search from all recepies which recepies ingredients contained in the given ingredients from last page
+    //and shows only those recepies
     private void GetDataFromFirebase() {
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -90,26 +86,19 @@ public class ResultsSearchByIngActivity extends AppCompatActivity {
     }
 
     private void initData() {
-
         IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         IngList = getIntent().getExtras().getParcelableArrayList("IngList");
         if(IngList!=null){
             String tempString = IngList.toString();
             IngListString = tempString.substring(1, tempString.length()-1);
-//            Toast.makeText(this, IngListString, Toast.LENGTH_SHORT).show();
         }
 
-
         database = FirebaseDatabase.getInstance().getReference("recipes");
-
 
         RecRV = findViewById(R.id.recRV);
         RecRV.setLayoutManager(new LinearLayoutManager(this));
 
-
         RecList  = new ArrayList<>();
         RecListkey  = new ArrayList<>();
-
-
     }
 }

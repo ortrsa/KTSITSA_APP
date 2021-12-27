@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button b1,b2;
+    private Button b1,b2,adding,approving;
     private Boolean IsAdmin;
 
     @Override
@@ -21,19 +21,25 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-
-        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         initbutton();
-        Button adding = findViewById(R.id.Btnadding1);
-        Button approving = findViewById(R.id.BtnAdminNotApp);
+        // If the current user is Admin show the Admin Buttons
+        Admin_Buttons();
 
+        ClickListeners();
+
+    }
+
+    private void Admin_Buttons() {
         if(IsAdmin){
-          adding.setVisibility(View.VISIBLE);
-          approving.setVisibility(View.VISIBLE);
+            adding.setVisibility(View.VISIBLE);
+            approving.setVisibility(View.VISIBLE);
         }
         else {
             b2.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void ClickListeners() {
         adding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,10 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
-
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
@@ -80,16 +83,19 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-
     public void LogOut(View view) {
          FirebaseAuth.getInstance().signOut();
          startActivity(new Intent(this, LogIn.class));
          finish();
 
     }
+
     private void initbutton() {
         b1 = findViewById(R.id.approvedrec);
         b2 = findViewById(R.id.notapprovedrec);
+        adding = findViewById(R.id.Btnadding1);
+        approving = findViewById(R.id.BtnAdminNotApp);
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
 
     }
 }

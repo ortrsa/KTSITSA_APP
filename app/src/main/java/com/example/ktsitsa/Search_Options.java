@@ -16,9 +16,10 @@ public class Search_Options extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_options);
 
-        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+
         initbutton();
 
+        //Each button nevigates to a diffrent screen
         ing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +39,7 @@ public class Search_Options extends AppCompatActivity {
         });
     }
     private void initbutton() {
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         name = findViewById(R.id.buttonSearchName);
         ing = findViewById(R.id.buttonSearchIng);
 

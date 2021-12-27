@@ -41,6 +41,7 @@ public class Search_by_Ingredient extends AppCompatActivity {
     private String[] s;
     private ArrayList<Ingredients> filterRes;
 
+    //This class opens a checkbox of ingredients that we choose from before searching by ingredients
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +88,7 @@ public class Search_by_Ingredient extends AppCompatActivity {
 
 
     }
-
+    //After choosing the ingredients sends the choosen ones to the next page for searching.
     private void Ok_button_click() {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +117,7 @@ public class Search_by_Ingredient extends AppCompatActivity {
         });
     }
 
+    //Filter the ingredients by category only the choosen categories will be shown.
     private void Filter_button_click() {
         filter_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,11 +163,6 @@ public class Search_by_Ingredient extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                    }
-                }).setNeutralButton("נקה הכל", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
                     }
                 });
                 builder.show();

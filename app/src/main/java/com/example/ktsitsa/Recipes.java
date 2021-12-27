@@ -16,7 +16,7 @@ public class Recipes {
     }
 
     public Recipes(){}
-
+    //This class represents Recepie by his fields.
     public Recipes(String recipeName, String recipeDescription, String recipeIngredients, String recipeImage, String Key, String uid) {
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;

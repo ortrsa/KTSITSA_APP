@@ -40,6 +40,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
     private String[] AllCategoruesList;
     private ArrayList<Ingredients> filterRes = new ArrayList<>();
 
+    //This class opens a checkbox of ingredients that we choose from before uploading a recepie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +99,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
 
     }
-
+    //After choosing the ingredients sends the choosen ones to the next page.
     private void Ok_button_click() {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +128,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
         });
     }
-
+    //Filter the ingredients by category only the choosen categories will be shown.
     private void Filter_button_click() {
             filter_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,11 +139,11 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                 builder.setTitle(" סינון קטגוריות ");
                 builder.setCancelable(false);
 
-
+                //function to choose multipule ingredients in dialog interface
                 builder.setMultiChoiceItems(AllCategoruesList, checkList, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
+                        //Kepps the ingredients position that we choose
                         if(isChecked){
                             ChackNumInList.add(which);
                             Toast.makeText(Ingredients_CheckBox.this, AllCategoruesList[which], Toast.LENGTH_SHORT).show();
@@ -175,11 +176,6 @@ public class Ingredients_CheckBox extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                    }
-                }).setNeutralButton("נקה הכל", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
                     }
                 });
                 builder.show();

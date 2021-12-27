@@ -51,24 +51,18 @@ public class AddRecipes extends AppCompatActivity {
     private TextView IngString;
     private ArrayList<Ingredients> IngList;
 
-
+    //Sets the the screen of adding recepie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        mAuth = FirebaseAuth.getInstance();
-        Uid = mAuth.getCurrentUser().getUid();
-        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
-        IngList = getIntent().getExtras().getParcelableArrayList("IngList");
-        IngListString = IngList.toString();
+        initdata();
+        SelectImage();
 
-        // get ingredients and set them as text.
-        IngString = findViewById(R.id.ingrid_text);
-        IngString.setText(IngListString.substring(1,IngListString.length()-1));
-        IngString.setOnClickListener(v -> onBackPressed());
-        Toast.makeText(this, ingToString(IngListString), Toast.LENGTH_SHORT).show();
+    }
 
+    private void SelectImage() {
         // select image from phone.
         mGetImage = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
@@ -80,26 +74,45 @@ public class AddRecipes extends AppCompatActivity {
         });
     }
 
+    private void initdata() {
+        //Gets info from FireBase
+        mAuth = FirebaseAuth.getInstance();
+        Uid = mAuth.getCurrentUser().getUid();
+        //Gets info from previus page
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+        IngList = getIntent().getExtras().getParcelableArrayList("IngList");
+        IngListString = IngList.toString();
+
+        // get ingredients and set them as text.
+        IngString = findViewById(R.id.ingrid_text);
+        IngString.setText(IngListString.substring(1,IngListString.length()-1));
+        IngString.setOnClickListener(v -> onBackPressed());
+
+    }
+    //Retunrs to home page
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(AddRecipes.this, MainActivity.class);
         intent.putExtra("isAdmin",IsAdmin);
         startActivity(intent);
 
     }
-
+    //Add recepie to FireBase
     public void add(View view) {
-
+        //init data
         recipeName = ((EditText) findViewById(R.id.TxtTitle)).getText().toString();
         recipeIngredients =  ingToString(IngListString);
         recipeDescription = ((EditText) findViewById(R.id.txtInstructions)).getText().toString();
+        //Sets name for image file by date
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
         Date now = new Date();
         String fileName = formatter.format(now);
+        //Checks all fields arent empty before uploading recepie to FireBase
         if(!recipeName.isEmpty() && !recipeIngredients.isEmpty() && !recipeDescription.isEmpty() && (imageUri != null) &&(Uid != null)){
 
             upimage(fileName);
             db = FirebaseDatabase.getInstance();
             dbr = db.getReference("recipes");
+            //Upload recepie with link (File name) to FireBase storage
             DatabaseReference pushrecipes = dbr.push();
             Recipes r = new Recipes(recipeName,recipeDescription,recipeIngredients,"images/" + fileName + ".jpeg", pushrecipes.getKey(), Uid);
 
@@ -108,6 +121,7 @@ public class AddRecipes extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
 
                     Toast.makeText(AddRecipes.this, "נשמר בהצלחה", Toast.LENGTH_SHORT).show();
+                    //After adding recepie returns to main page
                     Intent intent = new Intent(AddRecipes.this, MainActivity.class);
                     intent.putExtra("isAdmin",IsAdmin);
                     startActivity(intent);
@@ -121,9 +135,8 @@ public class AddRecipes extends AppCompatActivity {
         }
 
     }
-
+    //Upload image to FireBase storage
     private void upimage(String fileName) {
-
 
         progressDialog = new ProgressDialog(AddRecipes.this);
         progressDialog.setTitle("Uploading File....");
@@ -145,17 +158,17 @@ public class AddRecipes extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 if (progressDialog.isShowing())
                     progressDialog.dismiss();
-                Toast.makeText(AddRecipes.this,"Failed to Upload",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddRecipes.this,"העלאה נכשלה",Toast.LENGTH_SHORT).show();
             }
         });
     }
-
+    //Select image from phone
     public void addimage(View view) {
 
         mGetImage.launch("image/*");
 
     }
-
+    //Overide arrary to string ingredients
     public String ingToString(String ingredientsString){
         String ans = "";
         String[] splitString = ingredientsString.substring(1,ingredientsString.length() -1).split(",");

@@ -26,6 +26,9 @@ public class Waiting_For_Approve extends AppCompatActivity {
     private DatabaseReference database;
     private Boolean IsAdmin;
     private FirebaseAuth mAuth;
+    private ArrayList<Recipes> RecList;
+    private ArrayList<String> RecListkey;
+    private imagRV_adapter ada;
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(Waiting_For_Approve.this, MainActivity.class);
@@ -38,20 +41,13 @@ public class Waiting_For_Approve extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_not_approved_rec);
 
-        mAuth = FirebaseAuth.getInstance();
-        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+        initData();
+        Setadapter();
+        GetdataFromFirebase();
 
-        database = FirebaseDatabase.getInstance().getReference("recipes");
-        RecRV = findViewById(R.id.recRVnotapproved);
+    }
 
-        RecRV.setLayoutManager(new LinearLayoutManager(this));
-
-        ArrayList<Recipes> RecList  = new ArrayList<>();
-        ArrayList<String> RecListkey  = new ArrayList<>();
-
-        imagRV_adapter ada = new imagRV_adapter(RecList,Waiting_For_Approve.this, IsAdmin);
-        RecRV.setAdapter(ada);
-
+    private void GetdataFromFirebase() {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -77,7 +73,23 @@ public class Waiting_For_Approve extends AppCompatActivity {
         });
 
 
+    }
 
+    private void initData() {
+        mAuth = FirebaseAuth.getInstance();
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
 
+        database = FirebaseDatabase.getInstance().getReference("recipes");
+        RecRV = findViewById(R.id.recRVnotapproved);
+
+        RecRV.setLayoutManager(new LinearLayoutManager(this));
+
+        RecList  = new ArrayList<>();
+        RecListkey  = new ArrayList<>();
+    }
+
+    private void Setadapter() {
+        ada = new imagRV_adapter(RecList,Waiting_For_Approve.this, IsAdmin);
+        RecRV.setAdapter(ada);
     }
 }

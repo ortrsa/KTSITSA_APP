@@ -9,26 +9,31 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button b1,b2,b3,b4;
+    private Button Search_B, Recommended_B, Upload_B, Settings_B;
     private Boolean IsAdmin;
 
+    //Sets the main menu page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
         initbutton();
+        Buttons_Click();
 
-        b1.setOnClickListener(new View.OnClickListener() {
+
+    }
+    //Each button nevigates to a diffrent screen
+    private void Buttons_Click() {
+        Search_B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, Search_Options.class);
-                    intent.putExtra("isAdmin",IsAdmin);
-                    startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, Search_Options.class);
+                intent.putExtra("isAdmin",IsAdmin);
+                startActivity(intent);
             }
         });
-        b2.setOnClickListener(new View.OnClickListener() {
+        Recommended_B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Recommended.class);
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        b3.setOnClickListener(new View.OnClickListener() {
+        Upload_B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Ingredients_CheckBox.class);
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        b4.setOnClickListener(new View.OnClickListener() {
+        Settings_B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -55,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initbutton() {
-        b1 = findViewById(R.id.buttonrecipes);
-        b2 = findViewById(R.id.buttonrec);
-        b3 = findViewById(R.id.buttonADD);
-        b4 = findViewById(R.id.buttonsettings);
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+        Search_B = findViewById(R.id.buttonrecipes);
+        Recommended_B = findViewById(R.id.buttonrec);
+        Upload_B = findViewById(R.id.buttonADD);
+        Settings_B = findViewById(R.id.buttonsettings);
     }
 }

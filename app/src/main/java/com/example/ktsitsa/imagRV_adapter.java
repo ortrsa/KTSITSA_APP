@@ -40,6 +40,7 @@ public class imagRV_adapter extends RecyclerView.Adapter<imagRV_adapter.ViewHold
     private StorageReference storageReference;
     private Boolean IsAdmin;
 
+    //This is custon adapter that we use for showing recepies in a certian way in pages that show recepies.
     public imagRV_adapter(ArrayList<Recipes> respList, AppCompatActivity activity, Boolean IsAdmin){
         this.respList = respList;
         this.context = activity;

@@ -27,6 +27,9 @@ public class user_not_approved_rec extends AppCompatActivity {
     private Boolean IsAdmin;
     private FirebaseAuth mAuth;
     private String Uid;
+    private ArrayList<Recipes> RecList;
+    private ArrayList<String> RecListkey;
+    private imagRV_adapter ada;
 
     public void HomeBtnClick(View view) {
         Intent intent = new Intent(user_not_approved_rec.this, MainActivity.class);
@@ -39,21 +42,14 @@ public class user_not_approved_rec extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_not_approved_rec);
 
-        mAuth = FirebaseAuth.getInstance();
-        Uid = mAuth.getCurrentUser().getUid();
-        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
+        initData();
+        setAdapter();
+        getDataFromFirebase();
 
-        database = FirebaseDatabase.getInstance().getReference("recipes");
-        RecRV = findViewById(R.id.recRVnotapproved);
 
-        RecRV.setLayoutManager(new LinearLayoutManager(this));
+    }
 
-        ArrayList<Recipes> RecList  = new ArrayList<>();
-        ArrayList<String> RecListkey  = new ArrayList<>();
-
-        imagRV_adapter ada = new imagRV_adapter(RecList,user_not_approved_rec.this, IsAdmin);
-        RecRV.setAdapter(ada);
-
+    private void getDataFromFirebase() {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -77,9 +73,25 @@ public class user_not_approved_rec extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void setAdapter() {
+        ada = new imagRV_adapter(RecList,user_not_approved_rec.this, IsAdmin);
+        RecRV.setAdapter(ada);
+    }
 
+    private void initData() {
+        mAuth = FirebaseAuth.getInstance();
+        Uid = mAuth.getCurrentUser().getUid();
+        IsAdmin = getIntent().getExtras().getBoolean("isAdmin");
 
+        database = FirebaseDatabase.getInstance().getReference("recipes");
+        RecRV = findViewById(R.id.recRVnotapproved);
+
+        RecRV.setLayoutManager(new LinearLayoutManager(this));
+
+        RecList  = new ArrayList<>();
+        RecListkey  = new ArrayList<>();
 
     }
 }

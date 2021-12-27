@@ -43,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/Text_Ingredients"
+                android:id="@+id/recipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -62,7 +62,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/recipe"
+                android:id="@+id/Text_Ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

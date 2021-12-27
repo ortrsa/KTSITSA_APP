@@ -37,9 +37,7 @@ public class SearchRecipes extends AppCompatActivity {
         setContentView(R.layout.activity_search_recipes);
 
         initData();
-
         SetAdapter(RecList);
-
         GetDataFromFirebase();
         search();
 
@@ -68,7 +66,6 @@ public class SearchRecipes extends AppCompatActivity {
             }
         });
     }
-
     private void initData() {
 
 
@@ -82,7 +79,6 @@ public class SearchRecipes extends AppCompatActivity {
         RecListkey  = new ArrayList<>();
 
     }
-
     public void HomeBtnClickSearchRecipes(View view) {
         Intent intent = new Intent(SearchRecipes.this, MainActivity.class);
         intent.putExtra("isAdmin",IsAdmin);
@@ -92,6 +88,7 @@ public class SearchRecipes extends AppCompatActivity {
         ada = new imagRV_adapter(arrList,SearchRecipes.this, IsAdmin);
         RecRV.setAdapter(ada);
     }
+    // search recipes with serch view
     private void search() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

@@ -9,9 +9,9 @@ public class Ingredients implements Parcelable {
     private String category;
     private Boolean IsSelected;
 
-
+    //The empty constuctor uses for FireBase demands
     public Ingredients(){}
-
+    //this class represents ingredient by id,name,category.
     public Ingredients(String ID, String name, String category)  {
         this.ID = ID;
         this.name = name;

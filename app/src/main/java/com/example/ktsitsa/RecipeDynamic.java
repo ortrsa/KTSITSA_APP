@@ -54,23 +54,10 @@ public class RecipeDynamic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_dynamic);
 
+        Show_Load();
+        initdata();
 
-        progressDialog = new ProgressDialog(RecipeDynamic.this);
-        progressDialog.setTitle("Loading...");
-        progressDialog.show();
-
-        mRecipeName = (TextView) findViewById(R.id.text_recipe);
-        mRecipeIngredients = (TextView) findViewById(R.id.Text_Ingredients);
-        mRecipeMethod = (TextView) findViewById(R.id.Method);
-        mRecipe = (TextView) findViewById(R.id.recipe);
-        mRecipeImage = (ShapeableImageView) findViewById(R.id.Respimage);
-        LL = (LinearLayout) findViewById(R.id.LLRecipeDynamic);
-        checkBox = (CheckBox) findViewById(R.id.approveCB);
-        checkBox2 = (CheckBox) findViewById(R.id.recommended);
-        mAuth = FirebaseAuth.getInstance();
-        String uid = mAuth.getCurrentUser().getUid();
-
-
+        //Gets info from previous page
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("recipeName");
         String Ingredients = intent.getExtras().getString("recipeIngredients");
@@ -81,6 +68,7 @@ public class RecipeDynamic extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance().getReference("recipes").child(Key);
 
+        //Gets checkbox status from FireBase
         database.child("approved").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -96,7 +84,7 @@ public class RecipeDynamic extends AppCompatActivity {
             }
         });
 
-
+        //Sets recepie data from previous page
         mRecipeName.setText(Title);
         mRecipeIngredients.setText(Ingredients);
         mRecipeMethod.setText("רכיבים");
@@ -129,7 +117,7 @@ public class RecipeDynamic extends AppCompatActivity {
         }
 
 
-        // if admin is log in show approved check box
+        // if admin is log in show approved and recommended check boxes
 
 
         if (IsAdmin) {
@@ -159,5 +147,25 @@ public class RecipeDynamic extends AppCompatActivity {
             });
         }
 
+    }
+
+    private void initdata() {
+        mRecipeName = (TextView) findViewById(R.id.text_recipe);
+        mRecipeIngredients = (TextView) findViewById(R.id.Text_Ingredients);
+        mRecipeMethod = (TextView) findViewById(R.id.Method);
+        mRecipe = (TextView) findViewById(R.id.recipe);
+        mRecipeImage = (ShapeableImageView) findViewById(R.id.Respimage);
+        LL = (LinearLayout) findViewById(R.id.LLRecipeDynamic);
+        checkBox = (CheckBox) findViewById(R.id.approveCB);
+        checkBox2 = (CheckBox) findViewById(R.id.recommended);
+        mAuth = FirebaseAuth.getInstance();
+        String uid = mAuth.getCurrentUser().getUid();
+    }
+
+    private void Show_Load() {
+        //Loading Dialog
+        progressDialog = new ProgressDialog(RecipeDynamic.this);
+        progressDialog.setTitle("Loading...");
+        progressDialog.show();
     }
 }

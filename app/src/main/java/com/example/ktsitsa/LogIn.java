@@ -36,14 +36,16 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        initdata();
+    }
 
+    private void initdata() {
         TxtUser= (EditText)findViewById(R.id.TxtEmailAdd);
         TxtPassword= (EditText)findViewById(R.id.TxtPasswordAdd);
+        //Gets UserName and Password
         String User =TxtUser.getText().toString();
         String Password =TxtPassword.getText().toString();
         mAuth = FirebaseAuth.getInstance();
-
-
     }
 
     @Override
@@ -85,12 +87,12 @@ public class LogIn extends AppCompatActivity {
 
 
     public void sign_up_click(View view) {
-        // takes the txt from the login lins and makes them to string
+        // takes the text from the login lines and convert them to string
         EditText email = (EditText) findViewById(R.id.TxtEmailAdd);
         EditText Password = (EditText) findViewById(R.id.TxtPasswordAdd);
         String StrPassword = Password.getText().toString();
         String StrEmail = email.getText().toString();
-
+        //checks login conditions
         if(!StrEmail.equals("") && !StrPassword.equals("") &&  StrPassword.length() >= 6 && StrEmail.contains("@") &&  StrEmail.contains(".")) {
 
 
@@ -99,11 +101,12 @@ public class LogIn extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-
+                        //moves to the main page
                         Intent NAintent = new Intent(LogIn.this, MainActivity.class);
                         NAintent.putExtra("isAdmin", false);
                         startActivity(NAintent);
 
+                        //Set user authorization
                         String uid = mAuth.getCurrentUser().getUid();
                         database = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Admin");
                         database.setValue("0");
@@ -134,6 +137,7 @@ public class LogIn extends AppCompatActivity {
 
             mAuth.signInWithEmailAndPassword(StrEmail, StrPassword).addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
 
+                //Login and checks if the user is admin and contiue to main page
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
@@ -163,7 +167,7 @@ public class LogIn extends AppCompatActivity {
                         });
 
 
-                    } else {// אם לא מצליח
+                    } else {
                         Toast.makeText(LogIn.this, "לא ניתן להתחבר עם פרטים אלה!", Toast.LENGTH_LONG).show();// הודעה
                     }
                 }

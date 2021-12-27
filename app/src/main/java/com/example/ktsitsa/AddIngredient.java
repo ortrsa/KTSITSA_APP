@@ -22,12 +22,14 @@ public class AddIngredient extends AppCompatActivity {
     private DatabaseReference dbr;
 
 
-
+    //Sets the add ingredient screen (for admins only)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingredient);
+
         Button add = findViewById(R.id.BtnAdd1);
+        //Adds the ingredient by the data that was given by the admin
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
