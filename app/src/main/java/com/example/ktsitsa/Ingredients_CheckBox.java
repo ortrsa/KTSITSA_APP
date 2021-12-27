@@ -191,6 +191,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Ingredients ing = dataSnapshot.getValue(Ingredients.class);
+                    // while getting data from firebase update the category list for filtering by category
                     if(!setOfCategories.contains(ing.getCategory())) {
                         setOfCategories.add(ing.getCategory());
                     }
