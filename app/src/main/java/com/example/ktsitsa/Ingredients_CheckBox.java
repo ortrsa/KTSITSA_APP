@@ -167,7 +167,7 @@ public class Ingredients_CheckBox extends AppCompatActivity {
 
                         }
                         if(filterRes.size()>0){
-                        setadapter(filterRes);
+                            setadapter(filterRes);
                         }else {
                             setadapter(ingList);
                         }
