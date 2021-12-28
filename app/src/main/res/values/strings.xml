@@ -19,4 +19,6 @@
     <string name="recommend">מתכון מומלץ</string>
     <string name="send_notification_text">שלח התראה</string>
     <string name="LOGO">K T S I T S A</string>
+    <string name="Text_custom_send_notify">שלח התראה מותאמת אישית</string>
+    <string name="Text_auto_notify_send">שלח התראה אוטומטית</string>
 </resources>
