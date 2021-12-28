@@ -34,7 +34,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         super.onMessageReceived(remoteMessage);
 
 
-// playing audio and vibration when user se reques
+        // playing audio and vibration when user reques
         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
         r.play();
@@ -53,13 +53,8 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "CHANNEL_ID");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            builder.setSmallIcon(R.drawable.icontrans);
-            builder.setSmallIcon(resourceImage);
-        } else {
-//            builder.setSmallIcon(R.drawable.icon_kritikar);
-            builder.setSmallIcon(resourceImage);
-        }
+        builder.setSmallIcon(resourceImage);
+
 
 
 
