@@ -32,7 +32,7 @@
             android:shadowDx="10"
             android:shadowDy="10"
             android:shadowRadius="5"
-            android:text="K  T  S  I  T  S  A"
+            android:text="@string/LOGO"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/prime_color"
@@ -47,7 +47,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="660dp"
        >
 
 
