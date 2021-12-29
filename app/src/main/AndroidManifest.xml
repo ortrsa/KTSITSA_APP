@@ -48,9 +48,6 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".templet_start"
-            android:exported="false" />
-        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
@@ -84,13 +81,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <service
-            android:name=".PushNotificationService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>
