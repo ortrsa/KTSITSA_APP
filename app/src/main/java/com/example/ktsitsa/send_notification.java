@@ -36,17 +36,23 @@ public class send_notification extends AppCompatActivity {
 
         initData();
         getDatafromFirebase();
-        randomData();
         send();
 
 
 
     }
 
-    private void randomData() {
-
-
-
+    private String randomData() {
+        String pubRandomsen;
+        ArrayList<String> Randomsen= new ArrayList<>();
+        Randomsen.add("טעמתם כבר את ה-");
+        Randomsen.add("אתם חייבים לטעום את ה-");
+        Randomsen.add("עוד לא נרגענו מה");
+        Randomsen.add("אל תשארו רעבים כנסו לטעום את ה-");
+        Randomsen.add("היום זה יום של ");
+        int index2 = (int) (Math.random() * Randomsen.size());
+        pubRandomsen = Randomsen.get(index2);
+        return pubRandomsen;
 
     }
 
@@ -84,7 +90,7 @@ public class send_notification extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             int index = (int) (Math.random() * RecList.size());
                             RandRec = RecList.get(index);
-                            FcmNotificationsSender fsend = new FcmNotificationsSender("/topics/all", "המלצת היום בקציצה!", "נראה לנו שאנחנו יודעים מה בא לכם היום\n " + RandRec + " מעולה" +"\nעכשיו במומלצים", getApplicationContext(), send_notification.this);
+                            FcmNotificationsSender fsend = new FcmNotificationsSender("/topics/all", "המלצת היום בקציצה!", randomData() + RandRec +"\nעכשיו במומלצים", getApplicationContext(), send_notification.this);
                             fsend.SendNotifications();
                             Toast.makeText(send_notification.this, "פורסם!", Toast.LENGTH_SHORT).show();
                         }
@@ -149,9 +155,6 @@ public class send_notification extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference("recipes");
         title = findViewById(R.id.TxtTitlenotify);
         message = findViewById(R.id.txtmessnotify);
-
-
-
 
     }
 
